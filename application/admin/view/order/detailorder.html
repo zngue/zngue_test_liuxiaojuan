@@ -1,0 +1,211 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/static/admin/webupload/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/static/admin/webupload/style.css">
+<style>
+.file-item{float: left; position: relative; width: 110px;height: 110px; margin: 0 20px 20px 0; padding: 4px;}
+.file-item .info{overflow: hidden;}
+.uploader-list{width: 100%; overflow: hidden;}
+</style>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>订单详情</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" name="edit" id="edit" method="post" action="">
+                    
+                         <div class="form-group">
+                            <label class="col-sm-3 control-label">订单编号：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.order_number}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">游轮类型：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.s_type}">
+                            </div>
+                        </div>
+
+
+                    <div {if condition="$lists['s_type'] eq '豪华游轮'"}>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">豪华游轮系列名称：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.r_wholename}" >
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">豪华游轮名称：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.r_name}" >
+                            </div>
+                        </div>
+                    </div {/if}>
+                    <div {if condition="$lists['s_type'] eq '普通游轮'"}>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">普通游轮名称：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.p_name}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">普通游轮型号：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.p_model}" >
+                            </div>
+                        </div>
+                    </div {/if}>
+                        <div class="hr-line-dashed"></div>
+                         <div class="form-group">
+                            <label class="col-sm-3 control-label">游轮图片：</label>
+                            <div class="input-group col-sm-4">
+                                <img height="100px" style="float:left;margin-left: 50px;margin-top: -10px;" onerror="this.src='/static/admin/images/no_img.jpg'" src="/uploads/images/{$lists.s_img}"/>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">起始地：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.starting_place}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">目的地：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.end_place}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">用户姓名：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.username}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">手机号码：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.telphone}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">成人数：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.adult_num}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">成人价格：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.adult_moneys}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">儿童数：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.children_num}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">儿童价格：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.children_moneys}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">费用合计：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.total_money}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">备注信息：</label>
+                            <div class="input-group col-sm-4">
+                                <textarea type="text" rows="5" class="form-control">{$lists.remark}</textarea>
+                            </div>
+                        </div>
+                    <div {if condition="$lists['check_name']"}>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">选填的姓名：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.check_name}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">类型：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.type}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">身份证号码：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.idcard}" >
+                            </div>
+                        </div>
+                    </div {/if}>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">审核状态：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.status}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">添加时间：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" value="{$lists.create_times}" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-3">
+                                <!-- <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> 保存</button>&nbsp;&nbsp;&nbsp; -->
+                                <a class="btn btn-danger" href="javascript:history.go(-1);"><i class="fa fa-close"></i> 返回</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+  {include file="public/footer" /}
+
+</script>
+</body>
+</html>

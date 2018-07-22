@@ -1,0 +1,186 @@
+{include file="public/header" /}
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>普通游轮列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->           
+            <div class="row">
+                <div class="col-sm-12">   
+                <div  class="col-sm-2" style="width: 100px"> 
+                    <div class="input-group" >  
+                        <a href="{:url('ship/addCommon')}"><button class="btn btn-outline btn-primary" type="button">添加普通游轮</button></a> 
+                    </div>
+                </div>                                            
+                    <form name="admin_list_sea" class="form-search" method="post" action="{:url('ship/commonIndex')}">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" id="key" class="form-control" name="key" value="{$val}" placeholder="输入需查询的普通游轮名称/游轮型号" />   
+                                <span class="input-group-btn"> 
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button> 
+                                </span>
+                            </div>
+                        </div>
+                    </form>                         
+                </div>
+            </div>
+            <!--搜索框结束-->
+            <div class="hr-line-dashed"></div>
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="long-tr">
+                                <th width="3%">ID</th>
+                                <th width="5%">普通游轮名称</th>
+                                <th width="5%">普通游轮型号</th>
+                                <th width="4%">游轮图片</th>
+                                <!-- <th width="4%">添加时间</th>     <td>{{d[i].create_time}}</td>  -->
+                                <th width="18%">操作</th>
+                            </tr>
+                        </thead>
+                        <script id="list-template" type="text/html">
+                            {{# for(var i=0;i<d.length;i++){  }}
+                                <tr class="long-td">
+                                    <td>{{d[i].s_id}}</td>
+                                    <td>{{d[i].p_name}}</td>
+                                    <td>{{d[i].p_model}}</td>
+                                    <td><img src="/uploads/images/{{d[i].s_img}}" style="height: 30px" onerror="this.src='/static/admin/images/no_img.jpg'"/></td> 
+                                                               
+                                    <td>
+                                        <a href="javascript:;" onclick="vo_list({{d[i].s_id}})" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 价格</a>&nbsp;&nbsp;
+
+                                        <a href="javascript:;" onclick="edit_common({{d[i].s_id}},n=1)" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 基本信息</a>&nbsp;&nbsp;
+
+                                        <a href="javascript:;" onclick="edit_common({{d[i].s_id}},n=2)" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 游船设施</a>&nbsp;&nbsp;
+
+                                        <a href="javascript:;" onclick="edit_common({{d[i].s_id}},n=3)" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 客房介绍</a>&nbsp;&nbsp;
+
+                                        <a href="javascript:;" onclick="edit_common({{d[i].s_id}},n=4)" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 餐饮娱乐</a>&nbsp;&nbsp;
+
+                                        <a href="javascript:;" onclick="edit_common({{d[i].s_id}},n=5)" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 费用说明</a>&nbsp;&nbsp;
+
+                                        <a href="javascript:;" onclick="edit_common({{d[i].s_id}},n=6)" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 预定须知</a>&nbsp;&nbsp;
+                                        <a href="javascript:;" onclick="schedul_voyages({{d[i].s_id}})" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 电脑行程</a>&nbsp;&nbsp;
+                                        <a href="javascript:;" onclick="wap_schedul({{d[i].s_id}})" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 手机行程</a>&nbsp;&nbsp;
+                                        
+                                       
+                                        <a href="javascript:;" onclick="del_common({{d[i].s_id}})" class="btn btn-danger btn-xs btn-outline">
+                                            <i class="fa fa-trash-o"></i> 删除</a>
+                                    
+                                    </td>
+                                </tr>
+                            {{# } }}
+                        </script>
+                        <tbody id="list-content"></tbody>
+                    </table>
+                    <div id="AjaxPage" style="text-align:right;"></div>
+                    <div style="text-align: right;">
+                        共{$count}条数据，<span id="allpage"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 加载动画 -->
+<div class="spiner-example">
+    <div class="sk-spinner sk-spinner-three-bounce">
+        <div class="sk-bounce1"></div>
+        <div class="sk-bounce2"></div>
+        <div class="sk-bounce3"></div>
+    </div>
+</div>
+
+{include file="public/footer" /}
+
+<script type="text/javascript">
+   
+    /**
+     * [Ajaxpage laypage分页]
+     * @param {[type]} curr [当前页]
+     */
+    Ajaxpage();
+
+    function Ajaxpage(curr){
+        var key=$('#key').val();
+        $.getJSON('{:url("ship/commonIndex")}', {
+            page: curr || 1,key:key
+        }, function(data){      //data是后台返回过来的JSON数据
+            $(".spiner-example").css('display','none'); //数据加载完关闭动画
+            if(data==''){
+                $("#list-content").html('<td colspan="20" style="padding-top:10px;padding-bottom:10px;font-size:16px;text-align:center">暂无数据</td>');
+            }else{
+                var tpl = document.getElementById('list-template').innerHTML;
+                laytpl(tpl).render(data, function(html){
+                    document.getElementById('list-content').innerHTML = html;
+                });
+                laypage({
+                    cont: $('#AjaxPage'),//容器。值支持id名、原生dom对象，jquery对象,
+                    pages:'{$allpage}',//总页数
+                    skip: true,//是否开启跳页
+                    skin: '#1AB5B7',//分页组件颜色
+                    curr: curr || 1,
+                    groups: 3,//连续显示分页数
+                    jump: function(obj, first){
+                        if(!first){
+                            Ajaxpage(obj.curr)
+                        }
+                        $('#allpage').html('第'+ obj.curr +'页，共'+ obj.pages +'页');
+                    }
+                });
+            }
+        });
+    }
+ 
+//价格
+function vo_list(s_id){
+    location.href = "{:url('voyage/index')}?s_id="+s_id;
+
+}
+
+//基本信息
+function edit_common(s_id,n){
+    //location.href = './edit_common/s_id/'+s_id+'/n/'+n+'.html';
+
+    location.href = "{:url('ship/editCommon')}?s_id="+s_id+"&&n="+n ;
+}
+
+//电脑行程安排
+function schedul_voyages(s_id){
+    //location.href = './schedul_voyages/s_id/'+s_id+'.html';
+
+    location.href = "{:url('ship/schedulVoyages')}?s_id="+ s_id;
+}
+
+//手机行程安排
+function wap_schedul(s_id){
+    //location.href = './wap_schedul/s_id/'+s_id+'.html';
+
+    location.href = "{:url('ship/wapSchedul')}?s_id="+ s_id;
+}
+
+//删除
+function del_common(id){
+    lunhui.confirm(id,'{:url("delCommon")}');
+}
+
+
+
+</script>
+</body>
+</html>

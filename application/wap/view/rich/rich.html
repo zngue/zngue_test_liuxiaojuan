@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta name="keywords" content="船票,三峡船票,船票,重庆三峡船票销售中心" />
+  		<meta name="description" content="重庆三峡游轮船票销售中心属于重庆长江国际旅游公司，主要经营长江游轮旅游，是长江上最早从事长江三峡旅游业务的大型综合旅游国企，也是目前长江上规模最大、实力最强、安全最具保障的专业化旅游公司。">
+		<title>重庆三峡船票官网</title>
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/slstyle.css" />
+		<script src="__JS__/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+
+		<link rel="stylesheet" type="text/css" href="__CSS__/simple-calendar.css">
+		<script type="text/javascript" src="__JS__/simple-calendar.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="__CSS__/datedropper.css">
+		<script src="__JS__/datedropper.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="__CSS__/pagination.css"/>
+   		<script type="text/javascript" src="__JS__/pagination.min.js"></script>
+   		<script type="text/javascript" src="__JS__/jquery.tmpl.min.js" ></script>
+   		    <style>
+        .cib {
+            padding: 5px 2px;
+        }
+        .cib input {
+            vertical-align: bottom;
+            height: 20px;
+            color: #567e84;
+            margin: 2px 0px;
+        }
+        .cib button {
+            vertical-align: bottom;
+            height: 26px;
+            cursor: pointer;
+            background-color: #cbefff;
+            border: 1px solid #44a8d6;
+            color: #567e84;
+            margin: 2px 0px;
+        }
+        .desc {
+            padding-left: 2px;
+            color: #657e9a;
+        }
+        .code-con{
+            font-size: 18px;
+        }
+        .hr-c{
+            background-color: #2196F3;
+            height: 5px;
+            border: 0px;
+        }
+    </style>
+	</head>
+
+	<body>
+		{include file="public/common" /}
+		<div class="topnavs">
+			<img src="__IMG__/logo.jpg"  class="navBtn"/>
+			<div class="center">
+				{$title}
+			</div>
+			<img src="__IMG__/call.jpg" class="callbtn" tel="{$tel}"/>
+		</div>
+		<!-- 弹出popup -->
+		<div class="navsmodel">
+			<a href="{:url('index/index')}"><div class="navList">首页</div></a>
+			<a href="{:url('rich/rich')}"><div class="navList">豪华游轮</div></a>
+			<a href="{:url('common/common')}"><div class="navList">普通游轮</div></a>
+			<a href="{:url('problem/aboutuss')}"><div class="navList">关于我们</div></a>
+			<a href="{:url('problem/question')}"><div class="navList">常见问题</div></a>
+		</div>
+		<!-- 主题 main -->
+		<div class="mainContent">
+				 <div class="listBox">
+				 	<div class="lists">  
+				 		<div class="lhead">
+				 			<img src="__IMG__/head_hao.jpg" alt="">
+				 		</div>
+				 		<div class="allbtnBox">
+				 			<div class="allbtns chosec">全部 <img src="__IMG__/dwon_h.png" alt=""></div>
+				 		</div>
+
+				<div class="rich_one">
+
+				</div>
+
+				<script id="myTemplate" type="text/x-jquery-tmpl">  
+					{{each(i,la) data}}
+					<div class="parent">
+				 		<div class="banImg">
+				 			<a href="{:url('rich/richDetail')}?s_id={{= la.s_id}}"><img src="/uploads/images/{{= la.s_img}}" alt=""></a>
+				 		</div>
+				 		<div class="btnBox">
+				 			<div class="btns scheduleone" s_id="{{= la.s_id}}" onclick="scheduleone(this)">航期</a></div>
+				 			<div class="btns cenBtn"><a  href="{:url('rich/richDetail')}?s_id={{= la.s_id}}">介绍</a></div>
+				 			<div class="btns yuding" s_id="{{= la.s_id}}">预订</div>
+				 		</div>
+				 		<div class="nabox">
+				 			<span>{{= la.r_name}}</span> <span>¥{{= la.reference_price}}起</span>
+				 		</div>
+				 		<div class="typeBox">
+				 			<div class="typeshow chosec">{{= la.r_wholename}}</div>
+				 		</div>
+				 		<!-- 航期 -->
+						<div class="voyage typevoyaone">
+							 <div id='containerone_{{= la.s_id}}'></div>
+							 <div class="chooseArea">
+								<div class="leshows" onclick='leshows({{= la.s_id}})'>‹</div>
+									<span class="contss  hide">重庆到宜昌</span>
+									<span class="contshow show">宜昌到重庆</span>
+								<div class="leshows" onclick='leshows({{= la.s_id}})'>›</div>
+							 </div>
+						</div>
+				 	</div>
+
+				 	{{/each}}  
+				 </script>
+			 	
+				 	</div>
+				 </div>
+
+				<div class="paegs">
+				 	<div id="pagination_13" style="text-align: center;"></div>
+				</div>
+				 <div class="consult">
+				 	咨询电话: {$tel}
+				 </div>
+				 <div class="foot">
+				 	<span>Copyright©2010-2018 重庆三峡船票销售中心</span>
+				 	<span>旅行社经营许可证号：L-HUB-CJ00003</span>
+				 	<span>渝ICP备09022178号</span>
+				 	<span>渝公网安备 42010302000544号</span>
+				 </div>
+		</div>
+		<!-- 弹窗 订票 -->
+		<div class="poppup">
+            <div class="formBox">
+                <div class="turnoff">×</div>
+                <input type="hidden" name='v_id' id="v_id"/>
+                <input type="hidden" name='s_id' id="s_id"/>
+                <div class="oneitem">
+                    <div class="lboxo">乘坐邮轮</div><div class="rboxo"> <span class="shipsName"></span></div>
+                </div>
+                <div class="oneitem">
+                    <div class="lboxo">选择航程</div><div class="rboxo"> <div class="direction chooseWay" start="cy">重庆到宜昌</div> <div class="direction" start="yc">宜昌到重庆</div></div>
+                </div>
+                <div class="oneitem">
+                    <div class="lboxo">选择时间</div><div class="rboxo">
+                        <div class="ctimes widon">
+                            <div class="showTime">
+                                <img src="__IMG__/data.png" class="data" alt="">
+                                <input type="text" class="input" id="pickdate"/>
+                                <input class="spSty" value="今天"  readonly="readonly"/>
+                                <!--<img src="__IMG__/dwon.png" class="dwon" alt="" id="pickdate"> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oneitem">
+                    <div class="lboxo">预订价格</div>
+                    <div class="rboxo"> 
+                        <div class="exhibition">成人<span class="cored" id='adult_money'>0</span>元/人 </div>  
+                        <div class="">儿童<span class="cored" id='child_money'>0</span>元/人</div>
+                    </div>
+                </div>
+                <div class="oneitem">
+                    <div class="lboxo">参团人数</div>
+                    <div class="rboxo">
+                        <div class="adult aduloth">成人
+                            <input class="btninput noadd" id="minNum" name="" type="button" value="-" />  
+                            <input class="shownum " id="quantity" name="" type="text" value="0" readonly />  
+                            <input class="btninput" id="addNum" name="" type="button" value="+" />人 
+                        </div>
+                        <div class="adult">儿童
+                            <input class="btninput noadd" id="childmin" name="" type="button" value="-" />  
+                            <input class="shownum" id="childc" name="" type="text" value="0" readonly/>  
+                            <input class="btninput" id="childadd" name="" type="button" value="+" />人  
+                        </div>
+                    </div>
+                </div>
+                <div class="oneitem">
+                    <div class="lboxo">合计费用</div><div class="rboxo"> <span class="cored" >¥<input style="width: 200px" type="" name="" id="totalNum" value="" readonly/></span></div>
+                </div>
+                <div class="oneitem">
+                    <div class="lboxo">您的姓名</div><div class="rboxo"> <input id='username' class="inputin" type="text" placeholder="请输入您的姓名" name=""></div>
+                </div>
+                <div class="oneitem">
+                    <div class="lboxo">手机号码</div><div class="rboxo"> <input id='telphone' class="inputin" type="number"  placeholder="请输入您的手机号码" name=""></div>
+                </div>
+                <div class="btnBox">
+                    <button type="button" id='sub2'>确定</button>
+                </div>
+            </div>
+        </div>
+		<!-- 弹窗 选择船 -->
+		<div class="shipBox">
+			<div class="poptype">
+				<div class="altype">
+					<div class="listone">全部 <input whname="全部" type="radio" name="radio" value="0" id="aa" checked> <label for="aa"></label></div> 
+					{foreach wholes as $k=>$v}
+					<div class="listone">{$v.name} <input whname="{$v.name}" type="radio" name="radio" value="{$v.r_id}" id="bb{$k}"> <label for="bb{$k}"></label></div>
+					{/foreach}
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+
+<script type="text/javascript">
+		/*字体大小rem*/
+	(function(doc, win) {
+		var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = docEl.clientWidth;
+				if(!clientWidth) return;
+				if(clientWidth >= 640) {
+					docEl.style.fontSize = '100px';
+				} else {
+					docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+				}
+			};
+
+		if(!doc.addEventListener) return;
+		win.addEventListener(resizeEvt, recalc, false);
+		doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+	/*时间选择*/
+	var myDate = new Date();
+	var year=myDate.getFullYear();
+	var month=myDate.getMonth()+1;
+	if(month<=9){
+		month='0'+ month
+	}
+	var date=myDate.getDate();
+	if(date<=9){
+		date='0'+ date
+	} 
+	$("#pickdate").val(year+"-"+month+'-'+date);
+	$("#pickdate").dateDropper({
+		animate: true,
+		format: 'Y-m-d',
+		minYear: year,
+		maxYear:year+1
+	});
+
+	/*选择方向*/
+    $('.direction').click(function(){
+            if($(this).hasClass('chooseWay')){
+                
+            }else {
+                $(this).addClass("chooseWay").siblings().removeClass("chooseWay");
+            }
+            var start = $('.chooseWay').attr('start');
+            var s_id = $('#s_id').val();
+            var riqi = year+'-'+month+'-'+date;
+            $("#pickdate").val(riqi);
+            $('.spSty').val('今天');
+            rich_switch(start,s_id,riqi)
+    }); 
+
+    //监听变化的情况
+    $('#pickdate').change(function(){
+            var start = $('.chooseWay').attr('start');
+            var s_id = $('#s_id').val();
+            $(this).val();
+            var dt = new Date($(this).val());
+            var weekDay = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            $('.spSty').val(weekDay[dt.getDay()]);
+            var riqi = $("#pickdate").val();
+            rich_switch(start,s_id,riqi)
+    });
+
+    //当前游轮预订信息
+    function ship_detail(s_id) {
+        $.post('{:url("rich/shipDetail")}',
+            {s_id: s_id},
+            function (data) {
+                if (data.code == 1) {
+                    var list = data.data;
+                    $('.shipsName').html(list.r_name)
+                    var s_id = list.s_id;
+                    $('#s_id').val(s_id);
+                    var riqi = year+'-'+month+'-'+date;
+                    $("#pickdate").val(riqi);
+                    $('.spSty').val('今天');
+                }
+            });
+    }
+
+    //获取所选的行程信息
+    function rich_switch(start,s_id,riqi){
+        $.post('{:url("rich/richSwitch")}',
+        {start:start,s_id:s_id,riqi:riqi},
+        function(data){
+            $('#adult_money').html('0');
+            $('#child_money').html('0');
+            $('#totalNum').val('0.00');
+            $('#quantity').val('0');
+            $('#childc').val('0');
+            if(data.code==1){
+                if (data.data.data1=='') {
+                    //alert('当前游轮今日无行程')
+                    return;
+                }
+                if (data.data.data1[0] != '') {
+                    var list = data.data.data1[0];
+                    var adult_money = list.adult_money;
+                    var child_money = list.child_money;
+                    var v_id = list.v_id;
+                    $('#adult_money').html(adult_money);
+                    $('#child_money').html(child_money);
+                    $('#v_id').val(v_id);
+                    
+                }else{
+                    //alert('当前游轮今日无行程')
+                    //return;
+                }
+            }       
+            
+        });
+        return false;
+    }
+	
+	/*引入日历*/
+    // var myCalendar = new SimpleCalendar('#containerone');
+	/*展开堆叠*/
+	$(document).ready(function(){
+		$(".navBtn").click(function(){
+		    $(".navsmodel").slideToggle(400);
+		  });
+	});
+	/*选择进入页面*/
+	$('.navsmodel').click(function() {
+		$('.navsmodel').slideUp(400);
+	});
+
+	/*拨打电话*/
+	$('.callbtn').click(function(){
+		var tel = $('.callbtn').attr('tel');
+		window.location.href = "tel:"+tel
+	});
+
+	var whname = '全部';
+	rich1(1,whname);
+	/*选择船*/
+	$('.chosec').click(function(e){
+		$('.shipBox').slideDown(400);
+	});
+	/*关闭船*/
+	$('.listone').click(function(){
+        whname = $(this).find('input').attr('whname');
+		$('.shipBox').slideUp(400);
+		$('.chosec').html(whname);
+		rich1(1,whname)
+		// return false;
+	});
+
+
+	function rich1(page,name){
+	    $.post('{:url("rich/rich2")}',
+	    {page:page,whname:name},
+	    function(data){
+	        if(data.code==1){
+	        	$(".rich_one").empty();
+	        	var list = data.data;
+	        	var allpage = list.allpage;
+				$('#myTemplate').tmpl(list).appendTo('.rich_one')
+				//分页
+				$("#pagination_13").whjPaging({
+			    	 //设为true时，ajax里的success函数必须调用setPage方法，否则分页插件显示保持不变
+			  	     	//isResetPage: true,
+			            css: 'css-2',
+			            firstPage: '',
+			            lastPage: '',
+			            totalPage: allpage,
+			            previousPage: '<',
+			            nextPage: '>',
+			            confirm: 'Go',
+			            isShowRefresh: false,
+			            isShowFL: false,
+			            isShowPageSizeOpt: false,
+			        callBack: function (currPage, pageSize) {
+			            //console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+			            $("html,body").animate({scrollTop:0}, 500);
+			            rich2(currPage,whname);
+			        }
+			    });
+                $("#pagination_13").whjPaging("setPage", 1, allpage);
+	        }
+
+	        /*订票*/
+            $('.yuding').click(function () {
+               $('.poppup').slideDown(400);
+                    $(".poppup").on("touchmove",function(e) {
+                            e.preventDefault();   
+                    });
+                    $(".poppup").show(0,function(){
+                         $("body").css('overflow','hidden');
+                    });
+                var s_id = $(this).attr('s_id');
+                ship_detail(s_id);
+            });
+            /*关闭订票*/
+            $('.turnoff').click(function () {
+                $('.poppup').slideUp(400);
+                $("body").css('overflow','scroll');
+            });
+            // /*选择船*/
+			// $('.chosec').click(function(e){
+			// 	$('.shipBox').slideDown(400);
+			// });
+			// /*关闭船*/
+			// $('.listone').click(function(){
+			// 	var whname = $('input[name="radio"]:checked').attr('whname');
+			// 	$('.shipBox').slideUp(400);
+			// 	$('.chosec').html(whname);
+			// 	rich1(1,whname)
+			// });
+
+	        /*航期1*/
+			// $('.scheduleone').click(function(){
+			// 	$(".typevoyaone").slideToggle(400);
+			// 	if($(this).hasClass('ontype')){
+			// 		$(this).removeClass("ontype");
+			// 	}else{
+			// 		$(this).addClass("ontype");
+			// 	}
+			// 	var s_id = $(this).attr('s_id');
+             //    ship_schedule(s_id);
+			// 	//ship_schedule(s_id);
+			// 	console.log(55555)
+			// 	console.log(s_id)
+			// });
+
+
+	        
+	    });
+	    return false;
+	}
+    
+	function rich2(page,whname){
+	    $.post('{:url("rich/rich2")}',
+	    {page:page,whname:whname},
+	    function(data){
+	        if(data.code==1){
+	        	$(".rich_one").empty();
+	        	var list = data.data;
+				$('#myTemplate').tmpl(list).appendTo('.rich_one');
+	        }
+
+	        /*订票*/
+            $('.yuding').click(function () {
+                $('.poppup').slideDown(400);
+                    $(".poppup").on("touchmove",function(e) {
+                            e.preventDefault();   
+                    });
+                    $(".poppup").show(0,function(){
+                         $("body").css('overflow','hidden');
+                    });
+                var s_id = $(this).attr('s_id');
+                ship_detail(s_id);
+            });
+            /*关闭订票*/
+            $('.turnoff').click(function () {
+                $('.poppup').slideUp(400);
+                $("body").css('overflow','scroll');
+            });
+
+            // /*选择船*/
+			// $('.chosec').click(function(e){
+			// 	$('.shipBox').slideDown(400);
+			// });
+			// /*关闭船*/
+			// $('.listone').click(function(){
+			// 	var whname = $('input[name="radio"]:checked').attr('whname');
+			// 	$('.shipBox').slideUp(400);
+			// 	$('.chosec').html(whname);
+			// 	rich1(1,whname)
+			// });
+
+	        /*航期1*/
+			// $('.scheduleone').click(function(){
+			// 	$(".typevoyaone").slideToggle(400);
+			// 	if($(this).hasClass('ontype')){
+			// 		$(this).removeClass("ontype");
+			// 	}else{
+			// 		$(this).addClass("ontype");
+			// 	}
+			// 	var s_id = $(this).attr('s_id');
+			// 	//ship_schedule(s_id);
+			// 	console.log(6666)
+			// 	console.log(s_id)
+			// });
+
+	        
+	    });
+	    return false;
+	}
+
+	/*航期1*/
+	function scheduleone(obj){
+
+	    $(obj).parents('.parent').find('.typevoyaone').slideToggle(400);
+
+		if($(obj).hasClass('ontype')){
+			$(obj).removeClass("ontype");
+		}else{
+			$(obj).addClass("ontype");
+		}
+		var s_id = $(obj).attr('s_id');
+        ship_schedule(s_id);
+		return false;
+	};
+
+	//游轮查看航期
+	function ship_schedule(s_id,flag = true,target = '#containerone') {
+		//获取目标，不能直接传入参数，直接传入参数会导致获取不到目标元素
+		if (target == '#containerone'){
+            var tmp = '#containerone_'+ s_id;
+			var myCalendar = new SimpleCalendar(tmp);
+		}
+		if (target == '.containertwo'){
+			var tmp = '#containertwo_'+ s_id;
+			var myCalendar = new SimpleCalendar(tmp);
+		}
+		myCalendar.deleteMark();
+		$.post('{:url("index/shipSchedule")}',
+			{s_id: s_id},
+			function (data) {
+				if (data.code == 1) {
+					var list1 = data.data.data1;
+					var list2 = data.data.data2;
+
+					if (list1 != '' && flag) {
+						$.each(list1, function (k, p) {
+							myCalendar.addMark(p.nianyueri, '0');
+						});
+					}
+
+					if (list2 != '' && !flag) {
+						$.each(list2, function (k, p) {
+							myCalendar.addMark(p.nianyueri, '0');
+						});
+					}
+				}
+			});
+
+		return false;
+	}
+
+	function leshows(s_id){
+		//删除标记
+		// console.log(s_id);
+		if ($('.contss').hasClass('hide')) {
+			$('.contss').removeClass('hide');
+			$('.contss').addClass('show');
+			$('.contshow').removeClass('show');
+			$('.contshow').addClass('hide');
+			//重庆到宜昌
+			ship_schedule(s_id,false);
+		} else {
+			$('.contss').removeClass('show');
+			$('.contss').addClass('hide');
+			$('.contshow').removeClass('hide');
+			$('.contshow').addClass('show');
+			//宜昌到重庆
+			ship_schedule(s_id,true);
+		}
+	}
+
+	/*订票*/
+	$('.yuding').click(function(){
+		$('.poppup').slideDown(400);
+		$(".poppup").on("touchmove",function(e) {
+                            e.preventDefault();   
+                    });
+         $(".poppup").show(0,function(){
+            $("body").css('overflow','hidden');
+        });
+	});
+	/*关闭订票*/
+	$('.turnoff').click(function(){
+		$('.poppup').slideUp(400);
+		$("body").css('overflow','scroll');
+	});
+	/*选择方向*/
+	$('.direction').click(function(){
+			if($(this).hasClass('chooseWay')){
+				
+			}else {
+				$(this).addClass("chooseWay").siblings().removeClass("chooseWay");
+			}
+	});
+	/*计算成人价格*/
+	$(function(){  
+    var t = $("#quantity");  
+    var chone = $("#childc");
+    $("#addNum").click(function(){  
+        t.val(parseInt(t.val())+1);  
+        $("#minNum").removeAttr("disabled");                 //当按加1时，解除$("#min")不可读状态  
+        $("#minNum").removeClass('noadd');
+        setTotal();  
+    })  
+    $("#minNum").click(function(){  
+		    	if (parseInt(t.val())==1) { 
+		    		$("#minNum").addClass('noadd');
+		    	}
+               if (parseInt(t.val())>0) {                     //判断数量值大于1时才可以减少  
+                t.val(parseInt(t.val())-1)  
+                }else{  
+                $("#minNum").attr("disabled","disabled");        //当$("#min")为1时，$("#min")不可读状态  
+               }  
+        setTotal();  
+    })  
+    function setTotal(){ 
+    	var adult_money = $('#adult_money').html();
+        var child_money = $('#child_money').html(); 
+        $("#totalNum").val((parseInt(t.val())*adult_money+(chone.val())*child_money).toFixed(2));  //成人单价2250
+    }  
+    setTotal();  
+	});  	
+	/*计算儿童价格*/
+	$(function(){  
+	var man = $("#quantity");  
+    var child = $("#childc");  
+    $("#childadd").click(function(){  
+        child.val(parseInt(child.val())+1);  
+        $("#childmin").removeAttr("disabled");                 //当按加1时，解除$("#min")不可读状态  
+        $("#childmin").removeClass('noadd');
+        setTotal();  
+    })  
+    $("#childmin").click(function(){  
+    			if (parseInt(child.val())==1) { 
+		    		$("#childmin").addClass('noadd');
+		    	}
+               if (parseInt(child.val())>0) {                     //判断数量值大于1时才可以减少  
+                child.val(parseInt(child.val())-1)  
+                }else{  
+                $("#childmin").attr("disabled","disabled");        //当$("#min")为1时，$("#min")不可读状态  
+               }  
+        setTotal();  
+    })  
+    function setTotal(){  
+    	var adult_money = $('#adult_money').html();
+        var child_money = $('#child_money').html(); 
+        $("#totalNum").val((parseInt(child.val())*child_money+(man.val())*adult_money).toFixed(2));  //儿童单价1150
+    }  
+    setTotal();  
+	});  
+		//点击切换行程方向
+	$('.leshows').click(function(){
+			if($('.contss').hasClass('hide')){
+				$('.contss').removeClass('hide');
+				$('.contss').addClass('show');
+				$('.contshow').removeClass('show');
+				$('.contshow').addClass('hide');
+			}else{
+				$('.contss').removeClass('show');
+				$('.contss').addClass('hide');
+				$('.contshow').removeClass('hide');
+				$('.contshow').addClass('show');
+			}
+	})
+
+	//提交信息
+    $('#sub2').click(function(){
+        var v_id = $('#v_id').val();
+        var riqi = $("#pickdate").val();
+        var adult_money = $('#adult_money').html();
+        var child_money = $('#child_money').html();
+        var quantity = $('#quantity').val();
+        var childc = $('#childc').val(); 
+        var username = $('#username').val(); 
+        var telphone = $('#telphone').val(); 
+        /*if (riqi=='') {
+            alert('请选择出游时间')
+            return;
+        }
+        if (adult_money=='0') {
+            alert('当前游轮今日无行程')
+            return;
+        }
+        if (quantity=='0') {
+            alert('成人参团人数不能为空')
+            return;
+        }*/
+        if (username=='') {
+            alert('姓名不能为空')
+            return;
+        }
+        if (telphone=='') {
+            alert('手机号码不能为空')
+            return;
+        }
+        if (telphone.length!=11) {
+            alert('手机号码输入有误')
+            return;
+        }
+        $.post('{:url("rich/richSub2")}',
+        {v_id:v_id,start_time:riqi,adult_moneys:adult_money,children_moneys:child_money,
+            adult_num:quantity,children_num:childc,username:username,telphone:telphone},
+        function(data){
+            if(data.code==1){
+                alert('预订成功')
+                window.location.href="{:url('index/index')}";
+            }       
+            
+        });
+    });
+
+</script>

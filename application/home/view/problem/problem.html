@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>重庆三峡船票销售中心</title>
+		<meta name="keywords" content="船票,三峡船票,船票,重庆三峡船票销售中心" />
+  		<meta name="description" content="重庆三峡游轮船票销售中心属于重庆长江国际旅游公司，主要经营长江游轮旅游，是长江上最早从事长江三峡旅游业务的大型综合旅游国企，也是目前长江上规模最大、实力最强、安全最具保障的专业化旅游公司。">
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/zrstyle.css" />
+		<script type="text/javascript" src="__JS__/jquery-2.1.0.js"></script>
+	</head>
+
+	<body>
+		{include file="public/common" /}
+		<div id="commonproblem" class="min-width">
+			<div class="header">
+				<div class="headerinner">
+					<div class="leftnav">
+						<h3>{$title}</h3>
+						<ul>
+							<li>
+								<a href="{:url('index/index')}">首页</a>
+							</li>
+							<li>
+								<a href="{:url('rich/rich')}">豪华游轮</a>
+							</li>
+							<li>
+								<a href="{:url('common/common')}">普通游轮</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=1')}">预定方式</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=2')}">签订合同</a>
+							</li>
+							<li class="ac">
+								<a href="{:url('problem/problem')}">关于我们</a>
+							</li>
+							<li>
+								<a  target="_blank" href="https://shop372439941.taobao.com">淘宝支付</a>
+							</li>
+						</ul>
+					</div>
+					<div class="rightlogo">
+						<p>24小时值班电话:<span>{$tel}</span></p>
+						<img src="__IMG__/shiplogo.png" />
+					</div>
+				</div>
+			</div>
+
+			<div class="commonproblemwrap">
+				<div class="leftnavs">
+					<ul>
+						<li class="ac">公司简介</li>
+						<li>公司环境</li>
+						<li>联系我们</li>
+						<li>预订常见问题</li>
+						<li>签署旅游合同</li>
+						<li>付款问题解答</li>
+						<li>其他说明</li>
+					</ul>
+				</div>
+				<div class="rightdes">
+					<!--公司简介-->
+					<div class="tabitems companyprofile on">
+						<h3>公司简介</h3>
+						{$info.company_profile_pc}
+					</div>
+
+					<!--公司环境-->
+					<div class="tabitems ">
+						<h3>公司环境</h3>
+						{$info.company_environment_pc}
+					</div>
+
+					<!--联系我们-->
+					<div class="tabitems contactus">
+						<div class="contactuswrap">
+							<h3>联系我们</h3>
+							{$info.contact_us_pc}
+						</div>
+					</div>
+
+					<!--预定常见问题-->
+					<div class="tabitems reserveproblem">
+						<div class="reserveproblemwrap">
+							<h3>预定常见问题</h3>
+							{$info.common_problems_pc}
+						</div>
+
+					</div>
+
+					<!--签署旅游合同-->
+					<div class="tabitems signcontract">
+						<h3>签署旅游合同</h3>
+						{$info.signing_contract_pc}
+					</div>
+
+					<!--付款问题解答-->
+					<div class="tabitems paymentproblem">
+						<h3>付款问题解答</h3>
+						{$info.answer_question_pc}
+					</div>
+
+					<!--其他说明-->
+					<div class="tabitems otherproblem">
+						<h3>其他说明</h3>
+						<div id="other1_pc">{$info.other1_pc}</div>
+						<div id="other2_pc">{$info.other2_pc}</div>
+						<div id="other4_pc">{$info.other4_pc}</div>
+						<div id="other3_pc">{$info.other3_pc}</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!--底部-->
+			<div class="footer">
+				<p>Copyright©2010-2018 重庆三峡船票销售中心</p>
+				<!--<p>电话：(86)027-8276 5618</p>-->
+				<p>旅行社经营许可证号：L-HUB-CJ00003 渝ICP备09022178号</p>
+				<p>渝公网安备 42010302000544号</p>
+			</div>
+		</div>
+	</body>
+
+</html>
+
+<script type="text/javascript">
+	$(function() {
+		var nav = $(".leftnavs"); //得到导航对象
+		var win = $(window); //得到窗口对象
+		var sc = $(document); //得到document文档对象。
+		var left = $('.leftnavs').offset().left + 'px';
+		win.scroll(function() {
+			if(sc.scrollTop() >= 205) {
+				nav.addClass("fix");
+				$('.fix').css('left',left)
+			} else {
+				nav.removeClass("fix");
+			}
+
+		});
+	});
+
+	$(function() {
+		$(".leftnavs li").click(function() {
+			$(".leftnavs li").eq($(this).index()).addClass("ac").siblings().removeClass('ac');
+			$(".tabitems").hide().eq($(this).index()).show();
+			
+			if($(this).text()=='公司简介'){
+				$('.leftnav ul li').eq(5).addClass('ac').siblings().removeClass('ac');				
+			}else if($(this).text()=='预订常见问题'){
+				$('.leftnav ul li').eq(3).addClass('ac').siblings().removeClass('ac');
+			}else if($(this).text()=='签署旅游合同'){
+				$('.leftnav ul li').eq(4).addClass('ac').siblings().removeClass('ac');
+			}else if ($(this).text()=='付款问题解答') {
+				$('.leftnav ul li').eq(5).addClass('ac').siblings().removeClass('ac');
+			}else if($(this).text()=='其他说明'){
+				$('.leftnav ul li').eq(5).addClass('ac').siblings().removeClass('ac');
+			}else if($(this).text()=='公司环境'){
+				$('.leftnav ul li').eq(5).addClass('ac').siblings().removeClass('ac');
+			}else if($(this).text()=='联系我们'){
+				$('.leftnav ul li').eq(5).addClass('ac').siblings().removeClass('ac');
+			}
+		});
+
+		// 获取 被访问时的 url
+		var ur = location.href;
+		// 获取该url  = 后面的数字 （id）
+		if(ur.split('?').length>1){
+			var type = ur.split('type')[1].split("_")[1];
+			var type2 =type.split('.')[0];
+		}
+		
+		
+		if(type2 == 1) {
+			$('.leftnav ul li').eq(3).addClass('ac').siblings().removeClass('ac');
+			$(".leftnavs li").eq(3).addClass("ac").siblings().removeClass('ac');
+			$(".tabitems").hide().eq(3).show();
+		}else if(type2 == 2){
+			$('.leftnav ul li').eq(4).addClass('ac').siblings().removeClass('ac');
+			$(".leftnavs li").eq(4).addClass("ac").siblings().removeClass('ac');
+			$(".tabitems").hide().eq(4).show();
+		}else if(type2 == 3){
+			$('.leftnav ul li').eq(5).addClass('ac').siblings().removeClass('ac');
+			$(".leftnavs li").eq(5).addClass("ac").siblings().removeClass('ac');
+			$(".tabitems").hide().eq(5).show();
+		}else if(type2 == 4){
+			$('.leftnav ul li').eq(6).addClass('ac').siblings().removeClass('ac');
+			$(".leftnavs li").eq(6).addClass("ac").siblings().removeClass('ac');
+			$(".tabitems").hide().eq(6).show();
+		}
+
+	});
+</script>

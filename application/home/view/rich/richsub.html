@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>重庆三峡船票销售中心</title>
+		<meta name="keywords" content="船票,三峡船票,船票,重庆三峡船票销售中心" />
+  		<meta name="description" content="重庆三峡游轮船票销售中心属于重庆长江国际旅游公司，主要经营长江游轮旅游，是长江上最早从事长江三峡旅游业务的大型综合旅游国企，也是目前长江上规模最大、实力最强、安全最具保障的专业化旅游公司。">
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/zrstyle.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/layer/mobile/need/layer.css" />
+		<script type="text/javascript" src="__JS__/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="__JS__/jquery.form.js"></script>
+		<script type="text/javascript" src="__CSS__/layer/layer.js"></script>
+	</head>
+
+	<body>
+		{include file="public/common" /}
+		<div id="orderdetails" class="min-width">
+			<div class="header">
+				<div class="headerinner">
+					<div class="leftnav">
+						<h3>{$title}</h3>
+						<ul>
+							<li>
+								<a href="{:url('index/index')}">首页</a>
+							</li>
+							<li class="ac">
+								<a href="{:url('rich/rich')}">豪华游轮</a>
+							</li>
+							<li>
+								<a href="{:url('common/common')}">普通游轮</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=1')}">预定方式</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=2')}">签订合同</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem')}">关于我们</a>
+							</li>
+							<li>
+								<a  target="_blank" href="https://shop372439941.taobao.com">淘宝支付</a>
+							</li>
+						</ul>
+					</div>
+					<div class="rightlogo">
+						<p>24小时值班电话:<span>{$tel}</span></p>
+						<img src="__IMG__/shiplogo.png" /> 
+					</div>
+				</div>
+			</div>
+
+			<div class="orderdetailswrap">
+				<form name="edit" id="edit" method="post" action="{:url('rich/richSub2')}">
+				<h3>填写订单信息</h3>
+				<input type="hidden" name="v_id" value="{$info.v_id}" id="v_id"/>
+				<input type="hidden" name="start_time" value="{$info.starting_time}"/>
+				<input type="hidden" name="adult_moneys" id="adult" value="{$info.adult_money}"/>
+				<input type="hidden" name="children_moneys" id="child" value="{$info.child_money}"/>
+				<div class="orderinfo">
+					<div class="inputitem">
+						<span class="titlename">产品名称:</span>
+						<p>{$info.r_name}【{$info.starting_place}---{$info.end_place}（{$info.tourism_day}天{$info.tourism_day-1}夜）】</p>
+					</div>
+					<div class="inputitem">
+						<span class="titlename">出游时间:</span>
+						<p>{$info.starting_time}</p>
+					</div>
+					<div class="inputitem">
+						<span class="titlename">预定价格:</span>
+						<p class="itemp">成人:<span>{$info.adult_money}</span>元/人</p>
+						<p class="itemp">儿童:<span>{$info.child_money}</span>元/人</p>					
+					</div>
+					<div class="inputitem">
+						<span class="titlename">参团人数:</span>
+						<div class="row-item">
+							<span>成人:</span>
+							<input id="adult_num" type="number" name="adult_num" value="1" class="smallinput" onchange="num()"/>
+							<span>人</span>
+						</div>
+						<div class="row-item">
+							<span>儿童:</span>
+							<input id="children_num" type="number" name="children_num" value="0" class="smallinput" onchange="num()"/>
+							<span>人</span>
+						</div>
+					</div>
+					<div class="inputitem">
+						<span class="titlename">费用合计:</span>
+						<p class="price">￥{$info.adult_money}元</p>
+					</div>
+					<h4>您的联系方式(必填)</h4>
+					<div class="inputitem">
+						<span class="titlename">您的姓名:</span>
+						<input id="username" type="text" name="username" value="" />
+					</div>
+					<div class="inputitem">
+						<span class="titlename">手机号码:</span>
+						<input id="telphone" type="number" name="telphone" maxlength="11" />
+					</div>
+					<div class="inputitem">
+						<span class="titlename">备注信息:</span>
+						<textarea id="remark" name="remark" rows="" cols=""></textarea>
+					</div>
+				</div>
+				
+				<div class="btnwrap">
+					<button type="submit">提交</button>
+				</div>
+				</form>
+			</div>
+
+			<!--底部-->
+			<div class="footer">
+				<p>Copyright©2010-2018 重庆三峡船票销售中心</p>
+				<!--<p>电话：(86)027-8276 5618</p>-->
+				<p>旅行社经营许可证号：L-HUB-CJ00003 渝ICP备09022178号</p>
+				<p>渝公网安备 42010302000544号</p>
+			</div>
+		</div>
+		
+	</body>
+
+</html>
+
+<script type="text/javascript">
+	var minH = $(window).height()-305 + 'px'
+	$('.orderdetailswrap').css('min-height',minH)
+
+	var adult =$('#adult').attr('value');
+	var child =$('#child').attr('value');
+	
+	function num(){
+		var adult_num = $('#adult_num').val();
+		var children_num = $('#children_num').val();
+		if (adult_num<0 || children_num<0) {
+			layer.msg('参团人数不能小于0', {icon: 5,time:1500,shade: 0.1}, function(index){
+                layer.close(index);
+            });
+            return false;
+		}
+		var total = adult * adult_num + child * children_num;
+		$(".price").empty();
+		var html = '';
+		html += "￥" + total + "元";
+		$('.price').html(html);
+	
+	}
+	
+
+	$(function(){
+        $('#edit').ajaxForm({
+            beforeSubmit: checkForm, // 此方法主要是提交前执行的方法，根据需要设置
+            success: complete, // 这是提交后的方法
+            dataType: 'json'
+        });
+
+        function checkForm(){
+            
+            if( '' == $.trim($('#adult_num').val())){
+                layer.msg('成人参团人数不能为空', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }
+            if( 0 >= $.trim($('#adult_num').val())){
+                layer.msg('成人参团人数要大于0', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }
+            if( '' == $.trim($('#children_num').val())){
+                layer.msg('儿童参团人数不能为空', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }
+            if( 0 > $.trim($('#children_num').val())){
+                layer.msg('儿童参团人数不能小于0', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }
+            if( '' == $.trim($('#username').val())){
+                layer.msg('姓名不能为空', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }
+            if( '' == $.trim($('#telphone').val())){
+                layer.msg('手机号码不能为空', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }
+            if( 11 != $.trim($('#telphone').val().length) ){
+                layer.msg('手机号码必须为11位', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }
+            
+
+     }
+
+        function complete(data){
+            if(data.code == 1){
+                layer.msg(data.msg, {icon: 6,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                    window.location.href="{:url('index/index')}";
+                });
+            }else{
+                layer.msg(data.msg, {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }
+        }
+
+    });
+
+
+
+</script>

@@ -1,0 +1,615 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>重庆三峡船票销售中心</title>
+		<meta name="keywords" content="船票,三峡船票,船票,重庆三峡船票销售中心" />
+  		<meta name="description" content="重庆三峡游轮船票销售中心属于重庆长江国际旅游公司，主要经营长江游轮旅游，是长江上最早从事长江三峡旅游业务的大型综合旅游国企，也是目前长江上规模最大、实力最强、安全最具保障的专业化旅游公司。">
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/zrstyle.css" />
+		<script type="text/javascript" src="__JS__/jquery-2.1.0.js"></script>
+		<style type="text/css">
+			#ordinaryCruisedes .cost .costitem{
+				display: flex;
+    			flex-direction: column;
+				align-items:left !important;
+			}
+			.costitem p{
+				text-align: left!important;
+			}
+		</style>
+	</head>
+		
+	<body>
+		{include file="public/common" /}
+		<div id="ordinaryCruisedes">
+			<div class="header">
+				<div class="headerinner">
+					<div class="leftnav">
+						<h3>{$title}</h3>
+						<ul>
+							<li>
+								<a href="{:url('index/index')}">首页</a>
+							</li>
+							<li class="ac">
+								<a href="{:url('rich/rich')}">豪华游轮</a>
+							</li>
+							<li>
+								<a href="{:url('common/common')}">普通游轮</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=1')}">预定方式</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=2')}">签订合同</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem')}">关于我们</a>
+							</li>
+							<li>
+								<a  target="_blank" href="https://shop372439941.taobao.com">淘宝支付</a>
+							</li>
+						</ul>
+					</div>
+					<div class="rightlogo">
+						<p>24小时值班电话:<span>{$tel}</span></p>
+						<img src="__IMG__/shiplogo.png" />
+					</div>
+				</div>
+			</div>
+
+			<div class="ordinaryCruisedeswrap">
+				<div class="crumbsnav">
+					<a href="{:url('index/index')}">首页</a>
+					<span>></span>
+					<a href="{:url('rich/rich')}">豪华游轮</a>
+					<span>></span>
+					<a class="ac">{$info.r_name}</a>
+				</div>
+
+				<div class="shipdetails">
+					<img src="/uploads/images/{$info.s_img}" />
+					<div class="rightwrap">
+						<div class="destxt" s_id="{$info.s_id}">
+
+							<div class="deswraps">
+								<h1>{$info.r_name}</h1>
+
+
+								<div>
+									<span>游轮系列：</span>{$info.r_wholename}
+								</div>
+								<div>
+									<span>满载人数：</span>{$info.r_person}人
+								</div>
+								<div>
+									<span>客区甲板层数：</span>{$info.r_num}层
+								</div>
+								<div>
+									<span>最近装修：</span>{$info.r_year}
+								</div>
+								<div>
+									<span>总吨位：</span>{$info.r_weight}吨
+								</div>
+								<div style="line-height: 20px;margin-top: 10px;">
+									<span>长×宽：</span>{$info.r_norms}
+								</div>
+								
+							</div>
+
+
+
+
+
+						</div>
+						<div class="pricetxt">
+							<span>￥{$info.reference_price}起</span>
+							{if $info.v_id != 0}
+							<button type="button" onclick="reservation({$info.v_id})">立即预订</button>
+							{else/}
+							<button type="button">立即预订</button>
+							{/if}
+						</div>
+					</div>
+				</div>
+
+				<div class="tabwrap">
+					<div class="tabitem">
+						<div class="Imgbox A">
+							<img src="__IMG__/yd.png" />
+						</div>
+						<span>在线预订</span>
+					</div>
+					<div class="tabitem">
+						<div class="Imgbox">
+							<img src="__IMG__/xc.png" />
+						</div>
+						<span>行程安排</span>
+					</div>
+					<div class="tabitem">
+						<div class="Imgbox">
+							<img src="__IMG__/ss.png" />
+						</div>
+						<span>游船设施</span>
+					</div>
+					<div class="tabitem">
+						<div class="Imgbox">
+							<img src="__IMG__/kf.png" />
+						</div>
+						<span>客房介绍</span>
+					</div>
+					<div class="tabitem">
+						<div class="Imgbox">
+							<img src="__IMG__/cy.png" />
+						</div>
+						<span>餐饮娱乐</span>
+					</div>
+					<div class="tabitem">
+						<div class="Imgbox">
+							<img src="__IMG__/fy.png" />
+						</div>
+						<span>费用说明</span>
+					</div>
+					<div class="tabitem">
+						<div class="Imgbox">
+							<img src="__IMG__/xz.png" />
+						</div>
+						<span>预订须知</span>
+					</div>
+				</div>
+
+				<!--在线预订-->
+				<div class="Cruisedesitem reserve on">
+					<p class="Prompttxt">温馨提示:请直接点击发轮日期查看游轮最新价格</p>
+					<div class="calendarwrap">
+						<div class="date">
+				            <div class="head">
+				                <div class="prev">上一月</div>
+				                <div class="tomon"><span class="year"></span>年<span class="month"></span>月<span>【重庆到宜昌】</span></div>
+				            </div>
+				            <ol>
+				            	<li>周日</li>
+				            	<li>周一</li>
+				            	<li>周二</li>
+				            	<li>周三</li>
+				            	<li>周四</li>
+				            	<li>周五</li>
+				            	<li>周六</li>
+				            </ol>
+				            <ul>
+				                <li>日期</li>
+				                <li>日期</li>
+				                <li>日期</li>
+				                <li>日期</li>
+				                <li>日期</li>
+				                <li>日期</li>
+				                <li>日期</li>
+				                <li>日期</li>
+				                <li>日期</li>
+				                <li>日期</li>
+				                <li>日期</li>
+				            </ul>
+				        </div>
+				        <div class="date2">
+				            <div class="head">
+				                <div class="tomon"><span class="year2"></span>年<span class="month2"></span>月<span>【宜昌到重庆】</span></div>
+				                <div class="next">下一月</div>
+				            </div>
+				            <ol><li>周日</li><li>周一</li><li>周二</li><li>周三</li><li>周四</li><li>周五</li><li>周六</li></ol>
+				            <ul>
+				                <li>日期</li><li>日期</li><li>日期</li><li>日期</li><li>日期</li><li>日期</li><li>日期</li>
+				                <li>日期</li><li>日期</li><li>日期</li><li>日期</li>
+				            </ul>
+				        </div>
+					</div>
+					
+					<!--预定弹窗-->
+					<div class="reservewrap">
+						
+					</div>
+					
+				</div>
+				<style type="text/css">
+					
+					.p{width: 100%}
+				</style>
+
+				<!--行程安排-->
+				<div class="Cruisedesitem trip">
+
+					<div class="traptabnav">
+						<p class="cur">重庆<span>到</span>宜昌</p>
+						<p>宜昌<span>到</span>重庆</p>
+					</div>
+
+					<div class="traptabnavitem S">
+
+
+					{volist name="info.wap1" id='v'}
+
+						<div>
+						
+						<div style="white-space: normal; text-align: center;margin-top:40px;"><span style="color: rgb(227, 108, 9); font-size: 24px;">{$v.the_day}：{$v['visit_name']}</span></div>
+						
+						<div style="margin-top:40px;">
+							<div style="height: 261px; float: right;">
+								{if $v['day_img']}
+								<p style="white-space: normal;">
+									<span microsoft="" style="font-size: 16px; color: rgb(191, 191, 191);"></span><img src="/uploads/images/{$v['day_img']}"  border="0" vspace="0" style="width: 418px; height: 261px;">
+								</p>
+								<p style="text-align: center;"> {$v.visit_remarks} </p>
+								{/if}
+							</div>
+							<div style="margin-bottom: 5px;">
+						{volist name="v['time']" id="sub"}
+							
+								
+							
+
+						<p style="white-space: normal; line-height: 2em;">
+							<span style="font-size: 16px; color: rgb(165, 165, 165);display: inline-block;width: 150px;"> 
+								{$sub['clock']}
+							</span>
+							<span style="display: inline-block;font-size: 16px; color: rgb(165, 165, 165);" title="{$sub['sche']}">{$sub['sche']}</span>
+						</p>
+
+						{/volist}
+						</div>
+
+						
+						</div>
+						</div>
+						<div style="clear:both;"></div>
+
+					{/volist}
+					
+
+					</div>
+					
+					<div class="traptabnavitem">
+						
+
+						{volist name="info.wap2" id='v'}
+
+						<div>
+						<div style="white-space: normal; text-align: center;margin-top:40px;"><span style="color: rgb(227, 108, 9); font-size: 24px;">{$v.the_day}：{$v['visit_name']}</span></div>
+						
+						<div style="margin-top:40px;">
+							<div style="height: 261px; float: right;">
+								{if $v['day_img']}
+								<p style="white-space: normal;">
+									<span microsoft="" style="font-size: 16px; color: rgb(191, 191, 191);">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><img src="/uploads/images/{$v['day_img']}"  border="0" vspace="0" style="width: 418px; height: 261px;">
+								</p>
+								<p style="text-align: center;"> {$v.visit_remarks} </p>
+								{/if}
+							</div>
+							<div style="margin-bottom: 5px;">
+						{volist name="v['time']" id="sub"}
+							
+								
+							
+						<p style="white-space: normal; line-height: 2em;">
+							<span style="font-size: 16px; color: rgb(165, 165, 165);display: inline-block;width: 150px;"> 
+								{$sub['clock']}
+							</span>
+							<span style="display: inline-block;font-size: 16px; color: rgb(165, 165, 165);width:550px;">{$sub['sche']}</span>
+						</p>
+
+						{/volist}
+						</div>
+
+						
+						</div>
+						</div>
+					<div style="clear:both;"></div>
+					{/volist}
+					</div>
+				</div>
+
+				<!--游船设施-->
+				<div class="Cruisedesitem facilities">
+
+					<div class="facilitiesitem">
+						{$info.facilities_pc}
+					</div>
+
+				</div>
+
+				<!--客房介绍-->
+				<div class="Cruisedesitem guestroom">
+
+					<div class="">
+						{$info.introduce_pc}
+					</div>
+
+				</div>
+
+				<!--餐饮娱乐-->
+				<div class="Cruisedesitem entertainment">
+
+					<div class="entertainmentitem">
+						{$info.entertainment_pc}
+					</div>
+
+				</div>
+
+				<!--费用说明-->
+				<div class="Cruisedesitem cost">
+
+<!-- 					<span class="notes">此价格为大厅所在楼层二层的价格，如需指定楼层，每上一层楼加收100元/人的楼层费。2岁以下婴儿（不含2岁）收取成人价格的10%，2岁—12岁（不含12岁）不占床收取成人价格的50%，占床收取成人价格的75%</span>
+ -->
+					<div class="costitem">
+						{$info.explain_pc}
+					</div>
+
+				</div>
+
+				<!--预订须知-->
+				<div class="Cruisedesitem notice">
+
+					<div class="noticeitem">
+						{$info.notice_pc}
+					</div>
+
+					<!--<span class="statement">声明：凡通过本公司预定游船之旅行社及乘船旅客，均被认为在购票前已完全同意以上须知。</span>-->
+				</div>
+			</div>
+
+			<!--底部-->
+			<div class="footer">
+				<p>Copyright©2010-2018 重庆三峡船票销售中心</p>
+				<!--<p>电话：(86)027-8276 5618</p>-->
+				<p>旅行社经营许可证号：L-HUB-CJ00003 渝ICP备09022178号</p>
+				<p>渝公网安备 42010302000544号</p>
+			</div>
+		</div>
+	</body>
+
+</html>
+
+<script type="text/javascript">
+	//选项卡
+	$(".tabwrap .tabitem").click(function() {
+		$(".tabwrap .tabitem .Imgbox").removeClass('A');
+		$(".tabwrap .tabitem .Imgbox").eq($(this).index()).addClass("A");
+		$(".Cruisedesitem").hide().eq($(this).index()).show();
+	});
+
+	//行程安排选项卡
+	$(".trip .traptabnav p").click(function() {
+		$(".trip .traptabnav p").eq($(this).index()).addClass("cur").siblings().removeClass('cur');
+		$(".traptabnavitem").hide().eq($(this).index()).show();
+	});
+
+	$('.Imglist img').each(function(i) {
+		var num = i + 1;
+		if(num % 3 == 0) {
+			$(this).css('margin-right', '0')
+		}
+	})
+
+	$('.tripitem .tripwrap:odd').css('flex-direction', 'row-reverse');   
+	
+	//立即预定
+	function reservation(v_id){
+		$('.reservewrap').hide();
+		//window.location.href ="/home/rich/rich_check?v_id="+v_id;
+		window.location.href ="{:url('rich/richCheck')}?v_id="+v_id;
+	}
+
+	//日历开始
+	$(function() {
+		var date = new Date(); //定义一个日期对象；
+		var year = date.getFullYear(); //获取当前年份；
+		var month = date.getMonth() + 1; //获取当前月份；
+		var day = date.getDate(); //获取当前日期；
+		//回填数据
+		$('.year').text(year);
+		$('.year2').text(year);
+		$('.month').text(month);
+		$('.month2').text(month);
+		datt(year, month, '');
+		//下一月；
+		$('.next').click(function() {
+			$('.reservewrap').empty();
+			$('.reservewrap').hide();
+			next();
+		});
+
+		//上一月；
+		$('.prev').click(function() {
+			$('.reservewrap').empty();
+			$('.reservewrap').hide();
+			prev();
+		});
+
+		//返回本月；
+		//  $('.tomon').click(function(){
+		//      datt(year,month,'');
+		//      $('.year').text(year);
+		//      $('.month').text(month);
+		//  });
+
+	});
+	var s_id = $('.rightwrap div').attr('s_id');
+	//datt(2018,01, 25); 
+	function datt(nian, yue, ri) {
+
+		//    计算本月1号是周几；
+		var week = new Date(nian + '-' + yue + '-1').getDay();
+
+		//计算本月有多少天；
+		var days = new Date(nian, yue, 0).getDate();
+		//计算上月有多少天；
+		var dayw = new Date(nian, yue - 1, 0).getDate();
+		$.post('{:url("rich/richV")}',
+	    {s_id:s_id,yue:yue},
+	    function(data){
+	        if(data.code==1){
+	        	$('.date ul').empty();
+				$('.date2 ul').empty();
+	        	var html5 = '';
+				var html6 = '';
+	        	var list1 = data.data.data1;
+	        	if(list1 != ''){
+	        		
+	        		for(var i = 1; i <= days; i++) {
+				  		var n =true;
+					  	$.each(list1, function(k, p){
+							var time = new Date(nian, yue, i).getTime();
+							if(yue + '-' + i == p.yueri) {
+								html5 += "<li class='hasflight' data-jr=" + yue + "-" + i + " data-id=" + p.v_id + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span><i>￥"+p.adult_money+"起</i></li>"
+								n =false;
+							} 
+						});
+					  	if(n==true) {
+					  		html5 += "<li data-jr=" + yue + "-" + i + " data-id=" + time + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span></li>"
+					  	}
+					}
+
+	        	}else{
+	        		for(var i = 1; i <= days; i++) {
+						var time = new Date(nian, yue, i).getTime();
+						html5 += "<li data-jr=" + yue + "-" + i + " data-id=" + time + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span></li>"
+					}
+	        	}
+				var list2 = data.data.data2;
+				if(list2 != ''){
+					
+				  	for(var i = 1; i <= days; i++) {
+				  		var n =true;
+					  	$.each(list2, function(k, p){
+							var time = new Date(nian, yue, i).getTime();
+							if(yue + '-' + i == p.yueri) {
+								html6 += "<li class='hasflight' data-jr=" + yue + "-" + i + " data-id=" + p.v_id + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span><i>￥"+p.adult_money+"起</i></li>"
+								n =false;
+							} 
+						});
+					  	if(n==true) {
+					  		html6 += "<li data-jr=" + yue + "-" + i + " data-id=" + time + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span></li>"
+					  	}
+					}
+					
+
+				}else{
+					for(var i = 1; i <= days; i++) {
+						var time = new Date(nian, yue, i).getTime();
+						html6 += "<li data-jr=" + yue + "-" + i + " data-id=" + time + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span></li>"
+					}
+				}
+	        	$('.date ul').html(html5);
+				$('.date2 ul').html(html6);
+	        }  
+	        $('.hasflight').click(function() {
+	        	v_id = $(this).attr('data-id');
+	        	$('.reservewrap').empty();
+				rich_room(v_id);
+				var X = $(this).offset().top;
+				var Y = $(this).offset().left;
+				$('.reservewrap').css('left', Y-65);
+				$('.reservewrap').css('top', X+70);
+				$('.reservewrap').toggle();
+			})  
+
+	        //获取当前日期的时间戳；
+			var ym = new Date().getFullYear();
+			var mm = new Date().getMonth() + 1;
+			var dm = new Date().getDate();
+			var td_time = new Date(ym, mm, dm).getTime();
+			//计算前面空格键；
+			var html2 = '';
+			for(var j = dayw - week + 1; j <= dayw; j++) {
+				html2 += "<li class='no_date'>" + j + "</li>";
+			}
+			$('.date ul li').eq(0).before(html2);
+			$('.date2 ul li').eq(0).before(html2);
+			//计算后面空格键；
+			var html3 = '';
+			for(var x = 1; x < 43 - days - week; x++) {
+				html3 += "<li class='no_date'>" + x + "</li>";
+			}
+			$('.date ul li').eq(days + week - 1).after(html3);
+			$('.date2 ul li').eq(days + week - 1).after(html3);
+
+
+	    });
+		
+	}
+
+	function rich_room(v_id){
+	    $.post('{:url("rich/richRoom")}',
+	    {v_id:v_id},
+	    function(data){
+	        $('.reservewrap').empty();
+	        if(data.code==1){
+	        	var list4 = data.data;
+	        	var html4 = '';
+				html4 += "<div class='reserveinner'>";
+				html4 += "<div class='reserveitem'>";
+				html4 += "<span>房型</span>";
+				html4 += "<span>"+list4.room+"</span>";
+				html4 += "</div>";
+				html4 += "<div class='reserveitem'>";
+				html4 += "<span>成人</span>";
+				html4 += "<span class='price'>"+list4.adult_money+"/人</span>";
+				html4 += "</div>";
+				html4 += "<div class='reserveitem'>";
+				html4 += "<span>儿童</span>";
+				html4 += "<span class='price'>"+list4.child_money+"</span>";
+				html4 += "</div>";				
+				html4 += "</div>";
+				html4 += "<a href='javascript:;' onclick='reservation("+data.data.v_id+")'>立即预定</a>";
+			 	$('.reservewrap').html(html4);
+	        }       
+	        
+	    });
+	}
+
+	//找出节假日；
+
+	//下一月；
+	function next() {
+		var y = $('.year').text();
+		var y2 = $('.year2').text();
+		var m = $('.month').text();
+		var m2 = $('.month2').text();
+		if(m == 12) {
+			y++;
+			y2++;
+			m = 1;
+			m2 = 1;
+		} else {
+			m++;
+			m2++;
+		}
+		$('.year').text(y);
+		$('.year2').text(y2);
+		$('.month').text(m);
+		$('.month2').text(m2);
+		datt(y, m, '')
+	}
+
+	//上一月；
+	function prev() {
+		var y = $('.year').text();
+		var y2 = $('.year2').text();
+		var m = $('.month').text();
+		var m2 = $('.month2').text();
+		if(m == 1) {
+			y--;
+			y2--;
+			m = 12;
+			m2 = 12;
+		} else {
+			m--;
+			m2--;
+		}
+
+		$('.year').text(y);
+		$('.year2').text(y2);
+		$('.month').text(m);
+		$('.month2').text(m2);
+		datt(y, m, '')
+	}
+</script>

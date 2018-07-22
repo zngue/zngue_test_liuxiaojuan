@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta name="keywords" content="船票,三峡船票,船票,重庆三峡船票销售中心" />
+  		<meta name="description" content="重庆三峡游轮船票销售中心属于重庆长江国际旅游公司，主要经营长江游轮旅游，是长江上最早从事长江三峡旅游业务的大型综合旅游国企，也是目前长江上规模最大、实力最强、安全最具保障的专业化旅游公司。">
+		<title>重庆三峡船票官网</title>
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/slstyle.css" />
+		<script src="__JS__/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- 		<link rel="stylesheet" type="text/css" href="css/simple-calendar.css">
+		<script type="text/javascript" src="js/simple-calendar.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="datedropper.css">
+		<script src="datedropper.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+   		<script type="text/javascript" src="js/pagination.min.js"></script> -->
+
+	</head>
+
+	<body>
+		{include file="public/common" /}
+		<div class="topnavs">
+			<img src="__IMG__/logo.jpg"  class="navBtn"/>
+			<div class="center">
+				{$title}
+			</div>
+			<img src="__IMG__/call.jpg" class="callbtn" tel="{$tel}"/>
+		</div>
+		<!-- 弹出popup -->
+		<div class="navsmodel">
+			<a href="{:url('index/index')}"><div class="navList">首页</div></a>
+			<a href="{:url('rich/rich')}"><div class="navList">豪华游轮</div></a>
+			<a href="{:url('common/common')}"><div class="navList">普通游轮</div></a>
+			<a href="{:url('problem/aboutuss')}"><div class="navList">关于我们</div></a>
+			<a href="{:url('problem/question')}"><div class="navList">常见问题</div></a>
+		</div>
+		<!-- 主题 main -->
+		<div class="mainContent">
+				 <div class="listBox">
+				 	<div class="lists">
+				 		<div class="lhead">
+				 			<img src="__IMG__/head_about.jpg" alt="">
+				 		</div>
+
+				 		<div class="same_c5 saone">
+							<div class="centitle" > </div>
+							<div class="listcon">
+								<div class="">
+								<!-- <div class="oneshow"> 联系我们-->
+									{$info.contact_us_wap}
+								</div>
+								
+								<!-- <img src="__IMG__/gs_a.jpg" alt="">
+								<img src="__IMG__/gs_b.jpg" alt="">
+								<img src="__IMG__/gs_c.jpg" alt="">
+								<img src="__IMG__/gs_d.jpg" alt=""> -->
+							</div>
+						</div>
+
+
+				 	</div>
+				 </div>
+				
+
+				
+
+
+				<div class="listBox">
+				 	<div class="lists">
+				 		<!-- 预订须知  ❶❷❸❹❺❻❼❽❾❿-->
+					<div class="same_c5 saone">
+						<div class="centitle" > <span class="numfont">公司简介</span></div>
+						<div class="listcon">
+							<div class="oneshow marglong" style="flex-direction: column;">
+								{$info.company_profile_wap}
+							</div>
+							<!-- <div class="oneshow marglong">
+								本公司拥有“长江一号、长江二号、蓝鲸、维多利亚游轮”另外是新世纪系列、美国维多利亚系列，总统系列，黄金系列，华夏神女系列五星级游轮一级代理商总共20余艘游轮，总客位2200个，至今，公司游轮以接待过包括中外政要、知名人士在内的游客200多万人次。是长江发展历史最长、接待游客最多的游轮公司。
+							</div>
+							<div class="oneshow marglong">
+								公司是美国旅行商协会的会员，PATA会员单位。同时也是中国旅游车船协会副会长单位、中国旅行社协会常务理事单位、中国湖北省旅游协会常务理事单位。
+							</div> -->
+						</div>
+					</div>
+					<div class="same_c5 saone">
+						<div class="centitle" > <span class="numfont">公司环境</span></div>
+						<div class="listcon">
+							<div class="">
+							<!-- <div class="oneshow"> -->
+								{$info.company_environment_wap}
+							</div>
+							
+							<!-- <img src="__IMG__/gs_a.jpg" alt="">
+							<img src="__IMG__/gs_b.jpg" alt="">
+							<img src="__IMG__/gs_c.jpg" alt="">
+							<img src="__IMG__/gs_d.jpg" alt=""> -->
+						</div>
+					</div>
+				 	</div>
+				 </div> 
+				
+				 <div class="consult">
+				 	咨询电话: {$tel}
+				 </div>
+				 <div class="foot">
+				 	<span>Copyright©2010-2018 重庆三峡船票销售中心</span>
+				 	<span>旅行社经营许可证号：L-HUB-CJ00003</span>
+				 	<span>渝ICP备09022178号</span>
+				 	<span>渝公网安备 42010302000544号</span>
+				 </div>
+		</div>
+		
+		
+	</body>
+
+</html>
+
+<script type="text/javascript">
+
+	/*拨打电话*/
+	$('.callbtn').click(function(){
+		var tel = $('.callbtn').attr('tel');
+		window.location.href = "tel:"+tel
+	});
+		/*字体大小rem*/
+	(function(doc, win) {
+		var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = docEl.clientWidth;
+				if(!clientWidth) return;
+				if(clientWidth >= 640) {
+					docEl.style.fontSize = '100px';
+				} else {
+					docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+				}
+			};
+
+		if(!doc.addEventListener) return;
+		win.addEventListener(resizeEvt, recalc, false);
+		doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+	/*时间选择*/
+		/*展开选船堆叠*/
+	$(document).ready(function(){
+		$(".navBtn").click(function(){
+		    $(".navsmodel").slideToggle(400);
+		  });
+	});
+	$('.navsmodel').click(function() {
+		$('.navsmodel').slideUp(400);
+	});
+</script>

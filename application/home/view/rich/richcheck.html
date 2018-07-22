@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>重庆三峡船票销售中心</title>
+		<meta name="keywords" content="船票,三峡船票,船票,重庆三峡船票销售中心" />
+  		<meta name="description" content="重庆三峡游轮船票销售中心属于重庆长江国际旅游公司，主要经营长江游轮旅游，是长江上最早从事长江三峡旅游业务的大型综合旅游国企，也是目前长江上规模最大、实力最强、安全最具保障的专业化旅游公司。">
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/zrstyle.css" />
+		<script type="text/javascript" src="__JS__/jquery-2.1.0.js"></script>
+	</head>
+
+	<body>
+		{include file="public/common" /}
+		<div id="confirmvoyage" class="min-width">
+			<div class="header">
+				<div class="headerinner">
+					<div class="leftnav">
+						<h3>{$title}</h3>
+						<ul>
+							<li>
+								<a href="{:url('index/index')}">首页</a>
+							</li>
+							<li class="ac">
+								<a href="{:url('rich/rich')}">豪华游轮</a>
+							</li>
+							<li>
+								<a href="{:url('common/common')}">普通游轮</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=1')}">预定方式</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=2')}">签订合同</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem')}">关于我们</a>
+							</li>
+							<li>
+								<a  target="_blank" href="https://shop372439941.taobao.com">淘宝支付</a>
+							</li>
+						</ul>
+					</div>
+					<div class="rightlogo">
+						<p>24小时值班电话:<span>{$tel}</span></p>
+						<img src="__IMG__/shiplogo.png" />
+					</div>
+				</div>
+			</div>
+
+			<div class="confirmvoyagewrap">
+				<div class="crumbsnav">
+					<a href="{:url('index/index')}">首页</a>
+					<span>></span>
+					<a href="{:url('rich/rich')}">豪华游轮</a> 
+					<span>></span>
+					<a href="{:url('rich/richDetail')}?s_id={$info.s_id}">{$info.r_name}</a>
+					<span>></span>
+					<a class="ac">立即预订</a>
+				</div>
+
+				<div class="toptitle" v_id="{$info.v_id}" s_id="{$info.s_id}" nian="{$info.nian}" yue="{$info.yue}" ri="{$info.ri}" yueri="{$info.yueri}">
+					<h3>确定日期航程</h3>
+					<button onclick="Nextstep(v_id)">下一步</button>
+				</div>
+
+				<div class="calendarwrap">
+					<div class="date">
+						<div class="head">
+							<div class="prev">上一月</div>
+							<div class="tomon"><span class="year"></span>年<span class="month"></span>月<span>【重庆到宜昌】</span></div>
+						</div>
+						<ol>
+							<li>周日</li>
+							<li>周一</li>
+							<li>周二</li>
+							<li>周三</li>
+							<li>周四</li>
+							<li>周五</li>
+							<li>周六</li>
+						</ol>
+						<ul>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+						</ul>
+					</div>
+					<div class="date2">
+						<div class="head">
+							<div class="tomon"><span class="year2"></span>年<span class="month2"></span>月<span>【宜昌到重庆】</span></div>
+							<div class="next">下一月</div>
+						</div>
+						<ol>
+							<li>周日</li>
+							<li>周一</li>
+							<li>周二</li>
+							<li>周三</li>
+							<li>周四</li>
+							<li>周五</li>
+							<li>周六</li>
+						</ol>
+						<ul>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+							<li>日期</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--底部-->
+			<div class="footer">
+				<p>Copyright©2010-2018 重庆三峡船票销售中心</p>
+				<!--<p>电话：(86)027-8276 5618</p>-->
+				<p>旅行社经营许可证号：L-HUB-CJ00003 渝ICP备09022178号</p>
+				<p>渝公网安备 42010302000544号</p>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	//下一步
+	function Nextstep(v_id){
+		//window.location.href ="/home/rich/rich_sub?v_id="+v_id;
+		window.location.href ="{:url('rich/richSub')}?v_id="+v_id;
+	}
+	var v_id = $('.toptitle').attr('v_id');
+	var s_id = $('.toptitle').attr('s_id');
+	var nian = $('.toptitle').attr('nian');
+	var yue = $('.toptitle').attr('yue');
+	var ri = $('.toptitle').attr('ri');
+	var yueri = $('.toptitle').attr('yueri');
+	
+	//日历开始
+	$(function() {
+		//var date = new Date(); //定义一个日期对象；
+		var year = nian; //获取当前年份；
+		var month = yue; //获取当前月份；
+		var day = ri;
+		//回填数据
+		$('.year').text(year);
+		$('.year2').text(year);
+		$('.month').text(month);
+		$('.month2').text(month);
+		datt(year, month, day);
+		//下一月；
+		$('.next').click(function() {
+			next();
+		});
+
+		//上一月；
+		$('.prev').click(function() {
+			prev();
+		});
+
+		//返回本月；
+		//  $('.tomon').click(function(){
+		//      datt(year,month,'');
+		//      $('.year').text(year);
+		//      $('.month').text(month);
+		//  });
+
+	});
+	
+	function datt(nian, yue, ri) {
+		//    计算本月1号是周几；
+		var week = new Date(nian + '-' + yue + '-1').getDay();
+
+		//计算本月有多少天；
+		var days = new Date(nian, yue, 0).getDate();
+		//计算上月有多少天；
+		var dayw = new Date(nian, yue - 1, 0).getDate();
+
+		$.post('{:url("rich/richV")}',
+	    {s_id:s_id,yue:yue},
+	    function(data){
+	        if(data.code==1){
+	        	$('.date ul').empty();
+				$('.date2 ul').empty();
+	        	var html1 = '';
+				var html2 = '';
+	        	var list1 = data.data.data1;
+	        	if(list1 != ''){
+	        		
+	        		for(var i = 1; i <= days; i++) {
+						var n =true;
+						$.each(list1, function(k, p){
+							var time = new Date(nian, yue, i).getTime();
+							if(yue + '-' + i == p.yueri) {
+								
+								if( i == ri){
+									html1 += "<li class='hasflight selectvoyage' data-jr=" + yue + "-" + i + " data-id=" + p.v_id + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span><i>￥"+p.reference_price+"起</i></li>";
+								}else{
+									html1 += "<li class='hasflight' data-jr=" + yue + "-" + i + " data-id=" + p.v_id + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span><i>￥"+p.reference_price+"起</i></li>";
+								}
+								n =false;
+
+							} 
+						});
+						if(n==true) {
+						  		html1 += "<li data-jr=" + yue + "-" + i + " data-id=" + time + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span></li>"
+						}
+
+					}
+
+	        	}else{
+	        		for(var i = 1; i <= days; i++) {
+						var time = new Date(nian, yue, i).getTime();
+						html1 += "<li data-jr=" + yue + "-" + i + " data-id=" + time + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span></li>"
+					}
+	        	}
+				var list2 = data.data.data2;
+				if(list2 != ''){
+
+					for(var i = 1; i <= days; i++) {
+						var n =true;
+						$.each(list2, function(k, p){
+							var time = new Date(nian, yue, i).getTime();
+							if(yue + '-' + i == p.yueri) {
+								
+								if( i == ri){
+									html2 += "<li class='hasflight selectvoyage' data-jr=" + yue + "-" + i + " data-id=" + p.v_id + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span><i>￥"+p.reference_price+"起</i></li>";
+								}else{
+									html2 += "<li class='hasflight' data-jr=" + yue + "-" + i + " data-id=" + p.v_id + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span><i>￥"+p.reference_price+"起</i></li>";
+								}
+								n =false;
+
+							} 
+						});
+						if(n==true) {
+						  		html2 += "<li data-jr=" + yue + "-" + i + " data-id=" + time + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span></li>"
+						}
+
+					}
+					
+
+
+				}else{
+					for(var i = 1; i <= days; i++) {
+						var time = new Date(nian, yue, i).getTime();
+						html2 += "<li data-jr=" + yue + "-" + i + " data-id=" + time + " data-date=" + nian + "-" + yue + "-" + i + "><span>" + i + "</span></li>"
+					}
+				}
+	        	$('.date ul').html(html1);
+				$('.date2 ul').html(html2);
+	        }  
+	        $('.hasflight').click(function() {
+	        	v_id = $(this).attr('data-id');
+	        	
+	        	$('.hasflight').removeClass('selectvoyage');
+				$(this).addClass('selectvoyage');
+				
+			})  
+
+			//获取当前日期的时间戳；
+			var ym = new Date().getFullYear();
+			var mm = new Date().getMonth() + 1;
+			var dm = new Date().getDate();
+			var td_time = new Date(ym, mm, dm).getTime();
+
+			//计算前面空格键；
+			var html2 = '';
+			for(var j = dayw - week + 1; j <= dayw; j++) {
+				html2 += "<li class='no_date'>" + j + "</li>";
+			}
+			$('.date ul li').eq(0).before(html2);
+			$('.date2 ul li').eq(0).before(html2);
+
+
+			//计算后面空格键；
+			var html3 = '';
+			for(var x = 1; x < 43 - days - week; x++) {
+				html3 += "<li class='no_date'>" + x + "</li>";
+			}
+			$('.date ul li').eq(days + week - 1).after(html3);
+			$('.date2 ul li').eq(days + week - 1).after(html3);
+
+
+	    });
+
+	}
+
+	//找出节假日；
+
+	//下一月；
+	function next() {
+		var y = $('.year').text();
+		var y2 = $('.year2').text();
+		var m = $('.month').text();
+		var m2 = $('.month2').text();
+		if(m == 12) {
+			y++;
+			y2++;
+			m = 1;
+			m2 = 1;
+		} else {
+			m++;
+			m2++;
+		}
+		$('.year').text(y);
+		$('.year2').text(y2);
+		$('.month').text(m);
+		$('.month2').text(m2);
+		datt(y, m, '')
+	}
+
+	//上一月；
+	function prev() {
+		var y = $('.year').text();
+		var y2 = $('.year2').text();
+		var m = $('.month').text();
+		var m2 = $('.month2').text();
+		if(m == 1) {
+			y--;
+			y2--;
+			m = 12;
+			m2 = 12;
+		} else {
+			m--;
+			m2--;
+		}
+
+		$('.year').text(y);
+		$('.year2').text(y2);
+		$('.month').text(m);
+		$('.month2').text(m2);
+		datt(y, m, '')
+	}
+	
+</script>

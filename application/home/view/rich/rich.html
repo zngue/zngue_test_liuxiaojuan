@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>重庆三峡船票销售中心</title>
+		<meta name="keywords" content="船票,三峡船票,船票,重庆三峡船票销售中心" />
+  		<meta name="description" content="重庆三峡游轮船票销售中心属于重庆长江国际旅游公司，主要经营长江游轮旅游，是长江上最早从事长江三峡旅游业务的大型综合旅游国企，也是目前长江上规模最大、实力最强、安全最具保障的专业化旅游公司。">
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/zrstyle.css" />
+		<link rel="stylesheet" type="text/css" href="__JS__/layui/css/layui.css" />
+		<script type="text/javascript" src="__JS__/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="__JS__/layui/layui.all.js"></script>
+		<script type="text/javascript" src="__JS__/jquery.tmpl.min.js" ></script>
+	</head>
+
+	<body>
+		{include file="public/common" /}
+		<div id="luxuryCruise" class="min-width">
+			<div class="header">
+				<div class="headerinner">
+					<div class="leftnav">
+						<h3>{$title}</h3>
+						<ul>
+							<li>
+								<a href="{:url('index/index')}">首页</a>
+							</li>
+							<li class="ac">
+								<a href="{:url('rich/rich')}">豪华游轮</a>
+							</li>
+							<li>
+								<a href="{:url('common/common')}">普通游轮</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=1')}">预定方式</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=2')}">签订合同</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem')}">关于我们</a>
+							</li>
+							<li>
+								<a  target="_blank" href="https://shop372439941.taobao.com">淘宝支付</a>
+							</li>
+						</ul>
+					</div>
+					<div class="rightlogo">
+						<p>24小时值班电话:<span>{$tel}</span></p>
+						<img src="__IMG__/shiplogo.png" />
+					</div>
+				</div>
+			</div>
+
+			<div class="luxuryCruisewrap">
+				<div class="topnav">
+					<div class="navitem">
+						<span>航程:</span>
+						<ul class="voyagenav">
+							<li class="ac" p_id="0">全部</li>
+							<li p_id="1">重庆到宜昌</li>
+							<li p_id="2">宜昌到重庆</li>
+						</ul>
+					</div>
+
+					<div class="navitem">
+						<span>系列:</span>
+						<ul class="seriesnav">
+							<li class="ac" r_id="0">全部</li>
+							{if isset($wholes)}
+							{foreach wholes as $k=>$v}
+								<li r_id="{$v.r_id}">{$v.name}</li>
+							{/foreach}
+							{/if}
+						</ul>
+					</div>
+					
+				</div>
+
+				<div class="shipwrap">
+
+				</div>
+
+				<script id="myTemplate" type="text/x-jquery-tmpl">  
+
+						{{each(i,la) data}}
+						<div class="shipitme">
+							<a href="{:url('rich/richDetail')}?s_id={{= la.s_id}}">
+								<img src="/uploads/images/{{= la.s_img}}" />
+								<div class="shipdes">
+									<p class="shipname">{{= la.r_name}}</p>
+									<p>出游时间:<span>{{= la.starting_time}}</span></p>
+									<div class="bot">
+										<p>行程天数:<span>{{= la.tourism_day}}天</span></p>
+										<i class="price">￥{{= la.reference_price}}起</i>
+									</div>
+								</div>
+							</a>
+						</div>
+						{{/each}}  
+
+				</script>
+				
+				<!--分页-->
+				<div id="page1" style="text-align:center"></div>
+			</div>
+
+			<!--底部-->
+			<div class="footer">
+				<p>Copyright©2010-2018 重庆三峡船票销售中心</p>
+				<!--<p>电话：(86)027-8276 5618</p>-->
+				<p>旅行社经营许可证号：L-HUB-CJ00003 渝ICP备09022178号</p>
+				<p>渝公网安备 42010302000544号</p>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	$('.shipitme').each(function(i) {
+		var num = i + 1;
+		if(num % 4 == 0) {
+			$(this).css('margin-right', '0')
+		}
+	})
+	
+	
+	$(function() {
+		var h = $(window).height() - 545 + 'px';
+		$('.shipwrap').css('min-height', h)
+	});
+
+	var p_id =0;
+	var r_id =0;
+	
+	//航程
+	$('.voyagenav li').click(function(){
+		$(this).addClass('ac').siblings().removeClass('ac');
+		p_id = $(this).attr('p_id');
+		rich1(1,p_id,r_id)
+	})
+	//系列
+	$('.seriesnav li').click(function(){
+		$(this).addClass('ac').siblings().removeClass('ac');
+		r_id = $(this).attr('r_id');
+		rich1(1,p_id,r_id)
+	})
+
+	rich1(1,p_id,r_id);
+	function rich1(page,p_id,r_id){
+	    $.post('{:url("rich/rich2")}',
+	    {page:page,p_id:p_id,r_id:r_id},
+	    function(data){
+	        if(data.code==1){
+	        	$(".shipwrap").empty();
+	        	var list = data.data;
+				$('#myTemplate').tmpl(list).appendTo('.shipwrap');
+				//分页
+				layui.use('laypage', function(){
+						  var laypage = layui.laypage;
+						  //执行一个laypage实例
+						  laypage.render({
+						     elem: 'page1' // 注意，这里的 test1 是 ID，不用加 # 号
+						    ,count: data.data.total   // 数据总数，从服务端得到
+						    ,limit: data.data.pageSize  // 每页显示的条数
+						    ,layout:['prev', 'page', 'next','skip'], // 自定义排版。
+						    jump: function(obj, first){
+						        //obj包含了当前分页的所有参数，比如：
+						        //console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+						        //console.log(obj.limit); //得到每页显示的条数
+						        //console.log(obj.count);
+						        rich2(obj.curr,p_id,r_id);
+						        //首次不执行
+						        if(!first){
+						          //do something
+						        }
+						      }  
+						  });
+					});
+
+	        }       
+	        
+	    });
+	    return false;
+	}
+
+	function rich2(page,p_id,r_id){
+	    $.post('{:url("rich/rich2")}',
+	    {page:page,p_id:p_id,r_id:r_id},
+	    function(data){
+	        if(data.code==1){
+	        	$(".shipwrap").empty();
+	        	var list = data.data;
+				$('#myTemplate').tmpl(list).appendTo('.shipwrap');
+	        }       
+	        
+	    });
+	    return false;
+	}
+
+	
+
+
+	
+</script>

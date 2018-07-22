@@ -1,0 +1,137 @@
+{include file="public/header" /}
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>豪华游轮系列</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->           
+            <div class="row">
+                <div class="col-sm-12">   
+                <div  class="col-sm-2" style="width: 100px"> 
+                    <div class="input-group" >  
+                        <a href="{:url('ship/addWhole')}"><button class="btn btn-outline btn-primary" type="button">添加系列</button></a> 
+                    </div>
+                </div>                                            
+                    <form name="admin_list_sea" class="form-search" method="post" action="{:url('ship/wholeIndex')}">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" id="key" class="form-control" name="key" value="{$val}" placeholder="输入需查询的系列ID/名称" />   
+                                <span class="input-group-btn"> 
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button> 
+                                </span>
+                            </div>
+                        </div>
+                    </form>                         
+                </div>
+            </div>
+            <!--搜索框结束-->
+            <div class="hr-line-dashed"></div>
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="long-tr">
+                                <th width="5%">ID</th>
+                                <th width="10%">豪华游轮系列名称</th>
+                                <th width="8%">添加时间</th>
+                                <th width="8%">操作</th>
+                            </tr>
+                        </thead>
+                        <script id="list-template" type="text/html">
+                            {{# for(var i=0;i<d.length;i++){  }}
+                                <tr class="long-td">
+                                    <td>{{d[i].r_id}}</td>
+                                    <td>{{d[i].name}}</td>
+                                    <td>{{d[i].create_time}}</td>                    
+                                    <td>
+                                        <a href="javascript:;" onclick="edit_whole({{d[i].r_id}})" class="btn btn-primary btn-xs btn-outline">
+                                            <i class="fa fa-paste"></i> 编辑</a>&nbsp;&nbsp;
+                                    
+                                        <a href="javascript:;" onclick="del_whole({{d[i].r_id}})" class="btn btn-danger btn-xs btn-outline">
+                                            <i class="fa fa-trash-o"></i> 删除</a>
+                                    </td>
+                                </tr>
+                            {{# } }}
+                        </script>
+                        <tbody id="list-content"></tbody>
+                    </table>
+                    <div id="AjaxPage" style="text-align:right;"></div>
+                    <div style="text-align: right;">
+                        共{$count}条数据，<span id="allpage"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 加载动画 -->
+<div class="spiner-example">
+    <div class="sk-spinner sk-spinner-three-bounce">
+        <div class="sk-bounce1"></div>
+        <div class="sk-bounce2"></div>
+        <div class="sk-bounce3"></div>
+    </div>
+</div>
+
+{include file="public/footer" /}
+
+<script type="text/javascript">
+   
+    /**
+     * [Ajaxpage laypage分页]
+     * @param {[type]} curr [当前页]
+     */
+    Ajaxpage();
+
+    function Ajaxpage(curr){
+        var key=$('#key').val();
+        $.getJSON('{:url("ship/wholeIndex")}', {
+            page: curr || 1,key:key
+        }, function(data){      //data是后台返回过来的JSON数据
+            $(".spiner-example").css('display','none'); //数据加载完关闭动画
+            if(data==''){
+                $("#list-content").html('<td colspan="20" style="padding-top:10px;padding-bottom:10px;font-size:16px;text-align:center">暂无数据</td>');
+            }else{
+                var tpl = document.getElementById('list-template').innerHTML;
+                laytpl(tpl).render(data, function(html){
+                    document.getElementById('list-content').innerHTML = html;
+                });
+                laypage({
+                    cont: $('#AjaxPage'),//容器。值支持id名、原生dom对象，jquery对象,
+                    pages:'{$allpage}',//总页数
+                    skip: true,//是否开启跳页
+                    skin: '#1AB5B7',//分页组件颜色
+                    curr: curr || 1,
+                    groups: 3,//连续显示分页数
+                    jump: function(obj, first){
+                        if(!first){
+                            Ajaxpage(obj.curr)
+                        }
+                        $('#allpage').html('第'+ obj.curr +'页，共'+ obj.pages +'页');
+                    }
+                });
+            }
+        });
+    }
+
+//编辑
+function edit_whole(r_id){
+    //location.href = './edit_whole/r_id/'+r_id+'.html';
+
+    location.href = "{:url('ship/editWhole')}?r_id="+ r_id;
+}
+
+//删除
+function del_whole(id){
+    lunhui.confirm(id,'{:url("delWhole")}');
+}
+
+
+</script>
+</body>
+</html>

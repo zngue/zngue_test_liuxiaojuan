@@ -1,0 +1,1561 @@
+.min-width {
+	min-width: 1200px;
+}
+
+body,
+html {
+	background-color: #f3f3f3;
+	margin: 0;
+}
+
+.header {
+	height: 155px;
+	width: 100%;
+	background-color: #584ca3;
+}
+
+.header .headerinner {
+	width: 1200px;
+	height: 155px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header .leftnav {
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.header .leftnav ul {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 16px;
+	padding: 0;
+	margin: 0;
+}
+
+.header .leftnav ul li a {
+	cursor: pointer;
+	color: #FFFFFF;
+}
+
+.header .leftnav ul .ac {
+	font-weight: bold;
+}
+
+.header .leftnav h3 {
+	color: #ffffff;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.header .rightlogo {
+	position: relative;
+}
+
+.header .rightlogo img {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.header .rightlogo p {
+	margin-top: 20%;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	margin-right: 10px;
+	color: #FFFFFF;
+}
+
+.header .rightlogo p span {
+	font-size: 18px;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+.footer {
+	height: 150px;
+	min-width: 1200px;
+	background-color: #e5e5e5;
+	line-height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-size: 12px;
+}
+
+
+/*首页*/
+
+#index .header {
+	height: 155px;
+	width: 100%;
+	background-color: #eeeeee;
+}
+
+#index .header .headerinner {
+	width: 1200px;
+	height: 155px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+#index .header .leftnav {
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+#index .header .leftnav ul {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#index .header .leftnav ul li a {
+	cursor: pointer;
+	color: #333333;
+}
+
+#index .header .leftnav ul .ac {
+	font-weight: bold;
+}
+
+#index .header .leftnav h3 {
+	color: #4366b6;
+	font-size: 24px;
+}
+
+#index .header .rightlogo {
+	position: relative;
+}
+
+#index .header .rightlogo img {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#index .header .rightlogo p {
+	margin-top: 20%;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	margin-right: 10px;
+	color: #333333;
+}
+
+#index .header .rightlogo p span {
+	font-size: 18px;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+#index .banner {
+	width: 100%;
+}
+
+#index .banner img {
+	width: 100%;
+	display: block;
+}
+
+#index .swiper-container {
+	width: 1200px;
+	height: 490px;
+}
+
+#index .swiper-container .swiper-slide {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#index .swiper-container .shipitem {
+	width: 25%;
+	height: 165px;
+	border: 4px solid #e6e6e6;
+	position: relative;
+	margin: 20px 3.834%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#index .swiper-button-next,
+#index .swiper-button-prev {
+	top: 46%;
+}
+
+#index .swiper-container .shipitem a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 30px;
+	font-size: 16px;
+	color: #483f86;
+	z-index: 99;
+}
+
+#index .swiper-container .shipitem a p {
+	font-size: 14px;
+	color: #666666;
+	padding-left: 30px;
+}
+
+#index .swiper-container .shipitem a p span {
+	font-size: 18px;
+	color: #de0303;
+}
+
+#index .swiper-container .shipitem .data {
+	position: absolute;
+	top: -55px;
+	left: -25px;
+	color: #cac9c9;
+	font-size: 30px;
+	background-color: #f3f3f3;
+	padding: 40px 25px;
+}
+
+#index .swiper-container .shipitem .week {
+	position: absolute;
+	bottom: -40px;
+	right: -40px;
+	color: #cac9c9;
+	font-size: 18px;
+	background-color: #f3f3f3;
+	padding: 40px;
+}
+
+#index .shipswiper .tabnav {
+	width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 22px;
+	color: #6b6e9e;
+	margin-top: 85px;
+	position: relative;
+}
+
+#index .shipswiper .tabnav .cur {
+	color: #fff;
+	background-color: #6b6e9e;
+}
+
+#index .shipswiper .tabnav p {
+	padding: 5px 18px;
+	cursor: pointer;
+	border: 2px solid #6b6e9e;
+	margin: 0 14px;
+	color: #6b6e9e;
+}
+
+#index .shipswiper .tabnav p span {
+	font-size: 18px;
+	padding: 0 10px;
+}
+
+#index .tabitem {
+	display: none;
+}
+
+#index .on {
+	display: block;
+}
+
+#index .shipswiper .tabnav p:first-child::before {
+	content: '';
+	height: 2px;
+	width: 350px;
+	background-color: #dddddd;
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#index .shipswiper .tabnav p:last-child::before {
+	content: '';
+	height: 2px;
+	width: 350px;
+	background-color: #dddddd;
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+#index .lookmore {
+	width: 1200px;
+	text-align: center;
+	margin: 25px auto;
+}
+
+#index .lookmore a {
+	padding: 7px 11px;
+	background-color: #fff;
+	border-radius: 10px;
+	font-size: 14px;
+	color: #666666;
+}
+
+#index .lookmore a i {
+	font-style: normal;
+	line-height: 21px;
+}
+
+#index .shiplist h3 {
+	text-align: center;
+	font-size: 20px;
+}
+
+#index .shiplist {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#index .shiplist .shipwrap {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 40px;
+}
+
+#index .shiplist .shipitme {
+	width: 23.5%;
+	margin:0 0.7%;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+#index .shiplist .shipitme img {
+	height: 180px;
+	width: 100%;
+	display: block;
+}
+
+#index .shiplist .shipitme .shipdes {
+	padding: 15px 0;
+	font-size: 14px;
+	line-height: 25px;
+}
+
+#index .shiplist .shipseries {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+#index .shiplist .shipseries li {
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#index .shiplist .shipseries .ac {
+	color: #6b6e9e;
+}
+
+#index .shiplist .shipitme .shipdes p {
+	color: #333333;
+}
+
+#index .shiplist .shipitme .shipdes p span {
+	color: #666666;
+}
+
+#index .shiplist .shipitme .shipdes .shipname {
+	font-size: 18px;
+	color: #333333;
+}
+
+#index .shiplist .shipitme .shipdes .bot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#index .shiplist .shipitme .shipdes .price {
+	font-style: normal;
+	color: #f81919;
+	font-size: 18px;
+}
+
+#index .commonproblem {
+	width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#index .commonproblem .toptitle {
+	margin: 30px 0;
+}
+
+#index .commonproblem .toptitle h3 {
+	font-size: 20px;
+}
+
+#index .commonproblem .toptitle span {
+	font-size: 14px;
+	color: #666666;
+	padding-top: 10px;
+}
+
+#index .problemlist {
+	margin: 35px 0;
+	display: flex;
+	flex-direction: column;
+}
+
+#index .problemlist a {
+	color: #333333;
+	font-size: 18px;
+	line-height: 40px;
+}
+
+
+/*常见问题*/
+
+#commonproblem .leftnavs ul {
+	display: flex;
+	flex-direction: column;
+}
+
+#commonproblem .commonproblemwrap {
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 53px;
+}
+
+#commonproblem .leftnavs {
+	width: 25%;
+	background-color: #dcdcdc;
+	color: #737373;
+	font-size: 18px;
+	padding: 30px 40px;
+	float: left;
+}
+
+#commonproblem .leftnavs li {
+	cursor: pointer;
+	line-height: 50px;
+}
+
+#commonproblem .leftnavs .ac {
+	font-weight: bold;
+	color: #584ca3;
+}
+
+#commonproblem .rightdes {
+	width: 60%;
+	padding: 0 50px;
+	float: right;
+	padding-bottom: 70px;
+	color: #999999;
+	font-size: 18px;
+	line-height: 30px;
+	min-height: 550px;
+}
+
+#commonproblem .tabitems h3 {
+	font-size: 24px;
+	margin-bottom: 25px;
+	color: #333333;
+}
+
+#commonproblem .companyprofile p {
+	text-indent: 2em;
+}
+
+#commonproblem .companyambient img {
+	display: block;
+}
+
+#commonproblem .companyambient .imgbox {
+	display: flex;
+	justify-content: space-between;
+}
+
+#commonproblem .companyambient .rightimg {
+	margin-left: 20px;
+}
+
+#commonproblem .companyambient .botimg {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+#commonproblem .contactus .contactuswrap {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+#commonproblem .contactus .contactitem {
+	padding: 0 50px;
+	margin-bottom: 90px;
+	position: relative;
+}
+
+#commonproblem .contactus .phonenum {
+	display: flex;
+}
+
+#commonproblem .contactus .numdes {
+	display: flex;
+	flex-direction: column;
+}
+
+#commonproblem .contactus .contactitem b {
+	color: #333333;
+}
+
+#commonproblem .contactus .lQuotes {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#commonproblem .contactus .rQuotes {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+#commonproblem .reserveproblem .reserveproblemwrap {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+#commonproblem .reserveproblem ul li {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+
+#commonproblem .reserveproblem .innerwrap {
+	display: flex;
+}
+
+#commonproblem .reserveproblem .innerwrap li {
+	list-style-type: none;
+}
+
+#commonproblem .reserveproblem .program {
+	position: relative;
+	padding: 0 50px;
+	margin: 50px 0;
+}
+
+#commonproblem .reserveproblem .lQuotes {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#commonproblem .reserveproblem .rQuotes {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+#commonproblem .reserveproblem b {
+	color: #333333;
+}
+
+#commonproblem .reserveproblem .bank {
+	color: #2e77e5;
+}
+
+#commonproblem .reserveproblem .date {
+	color: #a59fcb;
+}
+
+#commonproblem .reserveproblem .holiday {
+	color: #3f64ee;
+}
+
+#commonproblem .problemtitle {
+	color: #584ca3;
+	display: block;
+	padding: 25px 0;
+}
+
+#commonproblem .signcontract ul li {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+
+#commonproblem .Explain {
+	font-size: 14px;
+	color: #ea4444;
+	display: block;
+}
+
+#commonproblem .paymentproblem ul li {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+
+#commonproblem .otherproblem .littletitle {
+	color: #333333;
+	padding: 25px 0;
+	display: block;
+}
+
+#commonproblem .otherproblem ol {
+	padding-left: 40px;
+}
+
+#commonproblem .otherproblem ol li {
+	list-style-type: lower-latin;
+	margin-left: 20px;
+}
+
+#commonproblem .tabitems {
+	display: none;
+}
+
+#commonproblem .on {
+	display: block;
+}
+
+#commonproblem .fix {
+	position: fixed;
+	top: 0;
+	width: 300px;
+}
+
+
+/*豪华游轮*/
+
+#luxuryCruise .luxuryCruisewrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#luxuryCruise .shipwrap {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 30px;
+}
+
+#luxuryCruise .shipwrap .shipitme {
+	width: 23.5%;
+	margin-right: 1.5%;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+#luxuryCruise .shipwrap .shipitme img {
+	width: 100%;
+	display: block;
+}
+
+#luxuryCruise .shipwrap .shipitme .shipdes {
+	padding: 15px 0;
+	font-size: 14px;
+	line-height: 25px;
+}
+
+#luxuryCruise .shipwrap .shipitme .shipdes p {
+	color: #333333;
+}
+
+#luxuryCruise .shipwrap .shipitme .shipdes p span {
+	color: #666666;
+}
+
+#luxuryCruise .shipwrap .shipitme .shipdes .shipname {
+	font-size: 18px;
+	color: #333333;
+}
+
+#luxuryCruise .shipwrap .shipitme .shipdes .bot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#luxuryCruise .shipwrap .shipitme .shipdes .price {
+	font-style: normal;
+	color: #f81919;
+	font-size: 18px;
+}
+
+#luxuryCruise .paging {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 50px;
+	margin-top: 30px;
+}
+
+#luxuryCruise .topnav {
+	margin-top: 10px;
+}
+
+#luxuryCruise .navitem {
+	font-size: 16px;
+	color: #333333;
+	display: flex;
+	padding: 5px 0;
+}
+
+#luxuryCruise .navitem ul {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 95%;
+}
+
+#luxuryCruise .navitem ul li {
+	cursor: pointer;
+	padding: 5px 10px;
+	margin-right: 25px;
+	border: 1px solid transparent;
+}
+
+#luxuryCruise .navitem span {
+	color: #999999;
+	width: 5%;
+	line-height: 31px;
+}
+
+#luxuryCruise .navitem .ac {
+	color: #4366b6;
+	border: 1px solid #7c73b6;
+}
+
+
+/*普通游轮*/
+
+#ordinaryCruise .ordinaryCruisewrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#ordinaryCruise .shipwrap {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 30px;
+}
+
+#ordinaryCruise .shipwrap .shipitme {
+	width: 23.5%;
+	margin-right: 1.5%;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+#ordinaryCruise .shipwrap .shipitme img {
+    height: 180px;	
+	width: 100%;
+	display: block;
+}
+
+#ordinaryCruise .shipwrap .shipitme .shipdes {
+	padding: 15px 0;
+	font-size: 14px;
+	line-height: 25px;
+}
+
+#ordinaryCruise .shipwrap .shipitme .shipdes p {
+	color: #333333;
+}
+
+#ordinaryCruise .shipwrap .shipitme .shipdes p span {
+	color: #666666;
+}
+
+#ordinaryCruise .shipwrap .shipitme .shipdes .shipname {
+	font-size: 18px;
+	color: #333333;
+}
+
+#ordinaryCruise .shipwrap .shipitme .shipdes .bot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#ordinaryCruise .shipwrap .shipitme .shipdes .price {
+	font-style: normal;
+	color: #f81919;
+	font-size: 18px;
+}
+
+#ordinaryCruise .paging {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 50px;
+	margin-top: 30px;
+}
+
+
+/*普通游轮详情*/
+
+#ordinaryCruisedes .ordinaryCruisedeswrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#ordinaryCruisedes .crumbsnav {
+	padding: 25px 0 60px 0;
+}
+
+#ordinaryCruisedes .crumbsnav a {
+	font-size: 16px;
+	color: #333333;
+	cursor: pointer;
+}
+
+#ordinaryCruisedes .crumbsnav a:hover {
+	color: #584ca3;
+}
+
+#ordinaryCruisedes .crumbsnav .ac {
+	color: #584ca3;
+}
+
+#ordinaryCruisedes .shipdetails {
+	display: flex;
+	border: 6px solid #7ecef4;
+	padding: 40px;
+}
+
+#ordinaryCruisedes .shipdetails img {
+	width: 565px;
+	display: block;
+}
+
+#ordinaryCruisedes .shipdetails .rightwrap {
+	display: flex;
+	margin-left: 55px;
+	justify-content: space-between;
+	width: 100%;
+	font-size: 16px;
+}
+
+#ordinaryCruisedes .shipdetails .rightwrap h1 {
+	color: #333333;
+	font-size: 36px;
+}
+#ordinaryCruisedes .shipdetails .deswraps{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40%;
+}
+#ordinaryCruisedes .shipdetails .destxt {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#ordinaryCruisedes .shipdetails .destxt p {
+	color: #333333;
+}
+
+#ordinaryCruisedes .shipdetails .destxt span {
+	color: #999999;
+}
+
+#ordinaryCruisedes .shipdetails .pricetxt {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#ordinaryCruisedes .shipdetails .pricetxt span {
+	color: #f81919;
+	font-size: 30px;
+	margin-bottom: 30px;
+	display: block;
+}
+
+#ordinaryCruisedes .shipdetails .pricetxt button {
+	border: none;
+	font-size: 18px;
+	background-color: #ec701d;
+	color: #FFFFFF;
+	cursor: pointer;
+	width: 150px;
+	height: 50px;
+	line-height: 50px;
+}
+
+#ordinaryCruisedes .tabwrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: 60px 0;
+}
+
+#ordinaryCruisedes .tabwrap .tabitem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	cursor: pointer;
+}
+
+#ordinaryCruisedes .tabwrap::after {
+	content: '';
+	width: 10%;
+	height: 2px;
+	display: inline-block;
+	background-color: #dcdcdc;
+}
+
+#ordinaryCruisedes .tabwrap::before {
+	content: '';
+	width: 10%;
+	height: 2px;
+	display: inline-block;
+	background-color: #dcdcdc;
+}
+
+#ordinaryCruisedes .tabwrap .Imgbox {
+	width: 82px;
+	height: 82px;
+	background-color: #c0c0c0;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 18px;
+}
+
+#ordinaryCruisedes .tabwrap .A {
+	background-color: #1961ad;
+}
+
+#ordinaryCruisedes .Prompttxt {
+	text-align: center;
+	font-size: 14px;
+	color: #43b2da;
+}
+
+#ordinaryCruisedes .ordinaryCruisedeswrap .Cruisedesitem {
+	display: none;
+}
+
+#ordinaryCruisedes .ordinaryCruisedeswrap .on {
+	display: block;
+}
+
+#ordinaryCruisedes .entertainmentitem {
+	margin-bottom: 100px;
+}
+
+#ordinaryCruisedes .entertainmentitem h3 {
+	text-align: center;
+	font-size: 24px;
+	color: #333333;
+}
+
+#ordinaryCruisedes .entertainmentitem .Imglist {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-top: 40px;
+}
+
+#ordinaryCruisedes .entertainmentitem .Imglist img {
+	width: 30%;
+	margin-right: 5%;
+}
+
+#ordinaryCruisedes .trip .traptabnav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 22px;
+}
+
+#ordinaryCruisedes .trip .traptabnav .cur {
+	color: #fff;
+	background-color: #6b6e9e;
+}
+
+#ordinaryCruisedes .trip .traptabnav p {
+	padding: 5px 18px;
+	cursor: pointer;
+	border: 2px solid #6b6e9e;
+	margin: 0 14px;
+	color: #6b6e9e;
+}
+
+#ordinaryCruisedes .trip .traptabnav p span {
+	font-size: 18px;
+	padding: 0 10px;
+}
+
+#ordinaryCruisedes .trip .traptabnavitem {
+	display: none;
+}
+
+#ordinaryCruisedes .trip .S {
+	display: block;
+}
+
+#ordinaryCruisedes .trip .tripitem h3 {
+	color: #333333;
+	font-size: 24px;
+	text-align: center;
+	padding: 35px 0;
+}
+
+#ordinaryCruisedes .trip .tripwrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+}
+
+#ordinaryCruisedes .trip .imgdes {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50%;
+}
+
+#ordinaryCruisedes .trip .imgdes img {
+	display: block;
+}
+
+#ordinaryCruisedes .trip .imgdes span {
+	color: #003333;
+	padding: 15px 0;
+}
+
+#ordinaryCruisedes .trip .tripdes {
+	position: relative;
+	padding: 0 70px;
+	color: #999999;
+	max-width: 40%;
+}
+
+#ordinaryCruisedes .trip .tripdes .tripdesitem {
+	display: flex;
+	line-height: 30px;
+}
+
+#ordinaryCruisedes .trip .tripdes .tripdesitem span {
+	width: 180px;
+	display: inline-block;
+}
+
+#ordinaryCruisedes .trip .tripdes .tripdesitem p {
+	max-width: 300px;
+}
+
+#ordinaryCruisedes .facilities {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#ordinaryCruisedes .facilities h3 {
+	color: #333333;
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+#ordinaryCruisedes .facilities .facilitiesitem {
+	margin-bottom: 70px;
+}
+
+#ordinaryCruisedes .facilities .facilitiesjs {
+	padding: 0 70px;
+	position: relative;
+}
+
+#ordinaryCruisedes .facilities .facilitiesjs p {
+	font-size: 18px;
+	color: #999999;
+	line-height: 30px;
+	margin-bottom: 40px;
+}
+
+#ordinaryCruisedes .lQuotes {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#ordinaryCruisedes .rQuotes {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+#ordinaryCruisedes .guestroom {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#ordinaryCruisedes .guestroom h3 {
+	color: #333333;
+	font-size: 24px;
+	text-align: center;
+}
+
+#ordinaryCruisedes .guestroom ul {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	font-size: 18px;
+	color: #999999;
+	padding: 0;
+	width: 100%;
+}
+
+#ordinaryCruisedes .guestroom .roomitem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 1px dashed #cecece;
+	margin-bottom: 50px;
+}
+
+#ordinaryCruisedes .guestroom .roomitem img {
+	display: block;
+	margin: 50px 0;
+}
+
+#ordinaryCruisedes .cost {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#ordinaryCruisedes .cost .notes {
+	color: #43b2da;
+	font-size: 14px;
+	line-height: 25px;
+}
+
+#ordinaryCruisedes .cost .costitem {
+	/*display: flex;
+	flex-direction: column;
+	align-items: center;*/
+	margin-bottom: 100px;
+}
+
+
+#ordinaryCruisedes .cost .costitem h3 {
+	color: #333333;
+	font-size: 24px;
+	padding: 40px 0;
+}
+
+#ordinaryCruisedes .cost .costitem .costdes {
+	position: relative;
+	padding: 0 50px;
+	color: #999999;
+	font-size: 18px;
+	line-height: 30px;
+}
+
+#ordinaryCruisedes .notice {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#ordinaryCruisedes .notice .noticeitem {
+	position: relative;
+	padding: 0 60px;
+	margin-bottom: 80px;
+}
+
+#ordinaryCruisedes .notice p {
+	color: #999999;
+	font-size: 18px;
+	line-height: 30px;
+	margin-bottom: 40px;
+}
+
+#ordinaryCruisedes .notice .statement {
+	text-align: center;
+	color: #43b2da;
+	font-size: 18px;
+	padding: 50px 0;
+	display: block;
+}
+
+#ordinaryCruisedes .calendarwrap {
+	display: flex;
+	justify-content: space-between;
+	margin: 15px 0 70px 0;
+}
+
+#ordinaryCruisedes .calendarwrap .date,#ordinaryCruisedes .calendarwrap .date2 {
+	width: 49%;
+}
+
+#ordinaryCruisedes .calendarwrap .head {
+	width: 100%;
+	font-size: 16px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #d3e8f3;
+}
+
+#ordinaryCruisedes .calendarwrap .hasflight {
+	cursor: pointer;
+	background-color: #fdfadf !important;
+}
+#ordinaryCruisedes .calendarwrap .hasflight i{
+	font-style: normal;
+}
+#ordinaryCruisedes .calendarwrap .head .prev,
+#ordinaryCruisedes .calendarwrap .head .next {
+	width: 20%;
+	text-align: center;
+	float: left;
+	cursor: pointer;
+}
+
+#ordinaryCruisedes .calendarwrap .head .tomon {
+	width: 80%;
+	float: left;
+	text-align: center;
+	color: #0097e5;
+	font-weight: bold;
+}
+
+#ordinaryCruisedes .calendarwrap .date ol,
+#ordinaryCruisedes .calendarwrap .date2 ol {
+	width: 100%;
+	height: 36px;
+	background: #f2f2f2;
+	padding: 0;
+	line-height: 36px;
+	margin: 0;
+}
+
+#ordinaryCruisedes .calendarwrap .date ol li,
+#ordinaryCruisedes .calendarwrap .date2 ol li {
+	display: block;
+	float: left;
+	width: 14.2857%;
+	text-align: center;
+	border: none;
+	padding: 0;
+}
+
+#ordinaryCruisedes .calendarwrap .date ul,
+#ordinaryCruisedes .calendarwrap .date2 ul {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	background: #fff;
+	padding: 0;
+	margin: 0;
+}
+
+#ordinaryCruisedes .calendarwrap .date ul li,
+#ordinaryCruisedes .calendarwrap .date2 ul li {
+	display: block;
+	width: 14.2857%;
+	height: 4.5rem;
+	text-align: center;
+	background: #fff;
+	position: relative;	
+}
+
+#ordinaryCruisedes .calendarwrap .date ul li i,
+#ordinaryCruisedes .calendarwrap .date2 ul li i {
+	font-size: 10px;
+	position: absolute;
+	right: 0;
+	bottom: 0.3rem;
+	display: block;
+	height: 15px;
+	line-height: 15px;
+	width: 100%;
+	text-align: center;
+	color: #e35925;
+}
+
+#ordinaryCruisedes .calendarwrap .date ul li span,
+#ordinaryCruisedes .calendarwrap .date2 ul li span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 4.5rem;
+	text-align: center;
+}
+
+#ordinaryCruisedes .calendarwrap .date ul .no_date,#ordinaryCruisedes .calendarwrap .date2 ul .no_date {
+	color: #999;
+	line-height: 4.5rem;
+}
+#ordinaryCruisedes .reservewrap{
+    text-align: center;
+    position: absolute;
+    font-size: 12px;
+    border: 1px solid #129ee7;
+    padding: 10px;
+    background-color: #fff;
+    display: none;
+}
+
+#ordinaryCruisedes .reserveinner{
+	display: flex;
+    align-items: center;
+}
+#ordinaryCruisedes .reservewrap a{
+	background: #0097e5;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+#ordinaryCruisedes .reserveinner span{
+	padding-bottom: 10px;
+}
+#ordinaryCruisedes .reserveinner .reserveitem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+/*填写订单信息*/
+
+#orderdetails .orderdetailswrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#orderdetails .orderdetailswrap h3 {
+	font-size: 24px;
+	padding: 30px 0 30px 20px;
+}
+
+#orderdetails .orderdetailswrap .orderinfo {
+	background-color: #fff;
+	padding: 30px;
+	font-size: 14px;
+}
+
+#orderdetails .orderdetailswrap .inputitem {
+	display: flex;
+	align-items: center;
+	margin: 15px 0;
+}
+
+#orderdetails .orderdetailswrap .inputitem .titlename {
+	color: #868686;
+	width: 100px;
+}
+
+#orderdetails .orderdetailswrap .inputitem .smallinput {
+	width: 50px;
+}
+
+#orderdetails .orderdetailswrap .inputitem .row-item {
+	margin-right: 50px;
+}
+
+#orderdetails .orderdetailswrap .inputitem .itemp {
+	margin-right: 20px;
+}
+
+#orderdetails .orderdetailswrap .inputitem .itemp span {
+	color: #ff5700;
+	padding: 0 5px;
+}
+
+#orderdetails .orderdetailswrap .inputitem input {
+	height: 22px;
+}
+
+#orderdetails .orderdetailswrap .inputitem textarea {
+	width: 600px;
+	height: 100px;
+}
+
+#orderdetails .orderdetailswrap .inputitem .price {
+	color: #ff5700;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#orderdetails .orderdetailswrap .btnwrap {
+	text-align: center;
+	margin: 20px 0;
+}
+
+#orderdetails .orderdetailswrap .btnwrap button {
+	padding: 10px 30px;
+	border: none;
+	background: #ec701d;
+	color: #fff;
+	cursor: pointer;
+	margin: 0 auto;
+}
+
+/*确认航程信息*/
+#confirmvoyage .confirmvoyagewrap{
+	width: 1200px;
+	margin: 0 auto;
+}
+#confirmvoyage .crumbsnav{
+	padding: 25px 0 60px 0;
+}
+#confirmvoyage .crumbsnav a{
+	font-size: 16px;
+    color: #333333;
+    cursor: pointer;
+}
+#confirmvoyage .crumbsnav a:hover{
+	color: #584ca3;
+}
+#confirmvoyage .crumbsnav .ac{
+	color: #584ca3;
+}
+#confirmvoyage  .toptitle{
+	display: flex;
+	justify-content: space-between;
+}
+#confirmvoyage .toptitle h3{
+	font-size: 24px;
+}
+#confirmvoyage .toptitle button{
+	border: none;
+    background: #ec701d;
+    color: #fff;
+    font-size: 24px;
+    width: 150px;
+    height: 60px;
+    cursor: pointer;
+}
+#confirmvoyage .calendarwrap {
+	display: flex;
+	justify-content: space-between;
+	margin: 15px 0 70px 0;
+}
+
+#confirmvoyage .calendarwrap .date,#confirmvoyage .calendarwrap .date2 {
+	width: 49%;
+}
+
+#confirmvoyage .calendarwrap .head {
+	width: 100%;
+	font-size: 16px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #d3e8f3;
+}
+
+#confirmvoyage .calendarwrap .hasflight {
+	cursor: pointer;
+	background-color: #fdfadf !important;
+}
+#confirmvoyage .calendarwrap .hasflight i{
+	font-style: normal;
+}
+#confirmvoyage .calendarwrap .head .prev,
+#confirmvoyage .calendarwrap .head .next {
+	width: 20%;
+	text-align: center;
+	float: left;
+	cursor: pointer;
+}
+
+#confirmvoyage .calendarwrap .head .tomon {
+	width: 80%;
+	float: left;
+	text-align: center;
+	color: #0097e5;
+	font-weight: bold;
+}
+
+#confirmvoyage .calendarwrap .date ol,
+#confirmvoyage .calendarwrap .date2 ol {
+	width: 100%;
+	height: 36px;
+	background: #f2f2f2;
+	padding: 0;
+	line-height: 36px;
+	margin: 0;
+}
+
+#confirmvoyage .calendarwrap .date ol li,
+#confirmvoyage .calendarwrap .date2 ol li {
+	display: block;
+	float: left;
+	width: 14.2857%;
+	text-align: center;
+	border: none;
+	padding: 0;
+}
+
+#confirmvoyage .calendarwrap .date ul,
+#confirmvoyage .calendarwrap .date2 ul {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	background: #fff;
+	padding: 0;
+	margin: 0;
+}
+
+#confirmvoyage .calendarwrap .date ul li,
+#confirmvoyage .calendarwrap .date2 ul li {
+	display: block;
+	width: 14.2857%;
+	height: 4.5rem;
+	text-align: center;
+	background: #fff;
+	position: relative;	
+}
+
+#confirmvoyage .calendarwrap .date ul li i,
+#confirmvoyage .calendarwrap .date2 ul li i {
+	font-size: 10px;
+	position: absolute;
+	right: 0;
+	bottom: 0.3rem;
+	display: block;
+	height: 15px;
+	line-height: 15px;
+	width: 100%;
+	text-align: center;
+	color: #e35925;
+}
+
+#confirmvoyage .calendarwrap .date ul li span,
+#confirmvoyage .calendarwrap .date2 ul li span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 4.5rem;
+	text-align: center;
+}
+
+#confirmvoyage .calendarwrap .date ul .no_date,#confirmvoyage .calendarwrap .date2 ul .no_date {
+	color: #999;
+	line-height: 4.5rem;
+}
+#confirmvoyage .calendarwrap .selectvoyage{
+	background: #00a0e9 !important;
+	color: #fff;
+}
+#confirmvoyage .calendarwrap .selectvoyage i{
+	color: #fff !important;
+}

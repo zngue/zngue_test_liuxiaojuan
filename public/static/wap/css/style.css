@@ -1,0 +1,625 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+ul li,
+ol li {
+	list-style: none;
+}
+
+img {
+	border: none;
+}
+
+input {
+	outline: none;
+}
+
+body,
+html {
+	background: #fff;
+	width: 100%;
+	font-family: "微软雅黑";
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+.t-decoration {
+	text-decoration: underline;
+}
+
+p,
+input,
+button {
+	margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0px;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	font-size: 0;
+	height: 0;
+}
+
+.clearfix {
+	zoom: 1
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.t_left {
+	text-align: left;
+}
+
+.t_center {
+	text-align: center;
+}
+
+.t_right {
+	text-align: right;
+}
+
+.margin0 {
+	margin: 0px;
+}
+
+.padding0 {
+	padding: 0px;
+}
+
+.mt0 {
+	margin-top: 0px;
+}
+
+.mt1 {
+	margin-top: 1px;
+}
+
+.mt3 {
+	margin-top: 3px;
+}
+
+.mt4 {
+	margin-top: 4px;
+}
+
+.mt5 {
+	margin-top: 5px;
+}
+
+.mt10 {
+	margin-top: 10px;
+}
+
+.mt15 {
+	margin-top: 15px !important;
+}
+
+.mt20 {
+	margin-top: 20px;
+}
+
+.mt25 {
+	margin-top: 25px;
+}
+
+.mt30 {
+	margin-top: 30px;
+}
+
+.mt35 {
+	margin-top: 35px;
+}
+.mt50 {
+	margin-top: 50px;
+}
+.mt140{
+	margin-top: 140px;
+}
+.mr0 {
+	margin-right: 0px;
+}
+
+.mr5 {
+	margin-right: 5px;
+}
+
+.mr10 {
+	margin-right: 10px;
+}
+
+.mr15 {
+	margin-right: 15px;
+}
+
+.mr20 {
+	margin-right: 20px;
+}
+
+.mr25 {
+	margin-right: 25px;
+}
+
+.mr30 {
+	margin-right: 30px;
+}
+
+.mr35 {
+	margin-right: 35px;
+}
+
+.mb0 {
+	margin-bottom: 0px;
+}
+
+.mb5 {
+	margin-bottom: 5px;
+}
+
+.mb10 {
+	margin-bottom: 10px;
+}
+
+.mb15 {
+	margin-bottom: 15px;
+}
+
+.mb20 {
+	margin-bottom: 20px;
+}
+
+.mb25 {
+	margin-bottom: 25px;
+}
+
+.mb30 {
+	margin-bottom: 30px;
+}
+
+.mb40 {
+	margin-bottom: 40px;
+}
+
+.mb50 {
+	margin-bottom: 50px;
+}
+
+.ml0 {
+	margin-left: 0px;
+}
+
+.ml5 {
+	margin-left: 5px;
+}
+
+.ml10 {
+	margin-left: 10px;
+}
+
+.ml15 {
+	margin-left: 15px;
+}
+
+.ml20 {
+	margin-left: 20px;
+}
+
+.ml25 {
+	margin-left: 25px;
+}
+
+.ml30 {
+	margin-left: 30px;
+}
+
+.ml35 {
+	margin-left: 35px;
+}
+
+.pt0 {
+	padding-top: 0px;
+}
+
+.pt5 {
+	padding-top: 5px;
+}
+
+.pt10 {
+	padding-top: 10px !important;
+}
+
+.pt15 {
+	padding-top: 15px;
+}
+
+.pt20 {
+	padding-top: 20px;
+}
+
+.pt25 {
+	padding-top: 25px;
+}
+
+.pt30 {
+	margin-top: 30px;
+}
+
+.pr0 {
+	padding-right: 0px;
+}
+
+.pr5 {
+	padding-right: 5px;
+}
+
+.pr10 {
+	padding-right: 10px;
+}
+
+.pr15 {
+	padding-right: 15px;
+}
+
+.pr20 {
+	padding-right: 20px;
+}
+
+.pr25 {
+	padding-right: 25px;
+}
+
+.pr30 {
+	padding-right: 30px;
+}
+
+.pb0 {
+	padding-bottom: 0px;
+}
+
+.pb5 {
+	padding-bottom: 5px;
+}
+
+.pb10 {
+	padding-bottom: 10px !important;
+}
+
+.pb15 {
+	padding-bottom: 15px;
+}
+
+.pb20 {
+	padding-bottom: 20px;
+}
+
+.pb25 {
+	padding-bottom: 25px;
+}
+
+.pb30 {
+	padding-bottom: 30px;
+}
+
+.pl0 {
+	padding-left: 0px;
+}
+
+.pl5 {
+	padding-left: 5px;
+}
+
+.pl10 {
+	padding-left: 10px;
+}
+
+.pl15 {
+	padding-left: 15px;
+}
+
+.pl20 {
+	padding-left: 20px !important;
+}
+
+.pl25 {
+	padding-left: 25px;
+}
+
+.pl30 {
+	padding-left: 30px;
+}
+
+
+/*--内容超出省略--*/
+
+.ellipsis {
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.ellipsis2 {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.ellipsis3 {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+
+/*--弹出窗--*/
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+	-webkit-appearance: none;
+}
+
+textarea {
+	-webkit-appearance: none;
+}
+
+.fs12 {
+	font-size: 12px;
+}
+
+.fs14 {
+	font-size: 14px;
+}
+
+.fs16 {
+	font-size: 16px;
+}
+
+.fs18 {
+	font-size: 18px;
+}
+
+.fs20 {
+	font-size: 20px;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+::-webkit-scrollbar {
+	width: 0px;
+	height: 1px;
+	background-color: rgba(242, 242, 242, 0);
+	opacity: 0;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+::-webkit-scrollbar-track {
+	opacity: 0;
+	-webkit-box-shadow: inset 0 0 0px rgba(242, 242, 242, 0);
+	border-radius: 10px;
+	background-color: rgba(242, 242, 242, 0);
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+::-webkit-scrollbar-thumb {
+	opacity: 0;
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 0px rgba(242, 242, 242, 0);
+	background-color: rgba(242, 242, 242, 0);
+}
+
+.nomore {
+	text-align: center;
+	font-size: 12px;
+	margin-bottom: 60px;
+	color: #c3baba;
+	margin-top: 4px;
+}
+
+.empty {
+	text-align: center;
+	margin-top: 50%;
+}
+
+.empty_data {
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.gray {
+	background: #a29f9f !important;
+}
+
+.draw {
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	display: block;
+}
+
+.draw ul li {
+	display: inline-block;
+	vertical-align: middle;
+	float: left;
+	height: 60px;
+	line-height: 60px;
+}
+
+.draw ul li:nth-child(1) {
+	width: 20%;
+}
+
+.draw ul li:nth-child(2) {
+	width: 80%;
+}
+
+.draw span {
+	margin: 0 10px;
+	cursor: pointer;
+	color: #999;
+}
+
+.color {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	border: 1px solid #dcdcdc;
+	margin: 0 5px;
+}
+
+.select {
+	width: 15px;
+	height: 15px;
+}
+
+.sig {
+	width: 100%;
+	height: 100%;
+	display: block;
+	overflow: hidden;
+}
+
+.top {
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px solid black;
+}
+
+.top ul li {
+	display: inline-block;
+	vertical-align: middle;
+	float: left;
+}
+
+.top ul li:nth-child(1) {
+	width: 20%;
+}
+
+.top ul li:nth-child(2) {
+	width: 60%;
+}
+
+.top ul li:nth-child(3) {
+	width: 20%;
+}
+
+.top span {
+	margin: 0 10px;
+	cursor: pointer;
+}
+
+.bg {
+	background: #000000;
+	opacity: 0.5;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	display: none;
+}
+
+[v-cloak] {
+	display: none;
+}
+
+.sign-clear {
+	float: right;
+	margin-right: 20px;
+	color: #f9f6f6;
+	width: 27px;
+	height: 21px;
+	border: 1px #fff solid;
+	background: #de1f1f;
+	line-height: 22px;
+	border-radius: 50%;
+	padding: 2px;
+	font-size: 12px;
+	margin-top: 10px;
+}
+
+.agree-btn {
+	width: 100%;
+	height: 37px;
+	border: none;
+	background: #30b6b5;
+	color: #fff;
+	font-size: 18px;
+}
+
+
+/*********mint css重写***********/
+
+.mint-indicator-wrapper {
+	z-index: 99999 !important;
+}
+
+.mint-cell-title {
+	flex: 1!important;
+	font-size: 14px;
+}
+
+.mint-cell-value.is-link {
+	font-size: 14px !important;
+	color: #000;
+	margin-right: 36px !important;
+}
+
+.whole-tip {
+	font-size: 12px;
+	color: #e00e0e;
+	margin-left: 10px;
+}
+
+.mint-indicator {
+	z-index: 999999 !important;
+}
+.absolute{
+	position: absolute;
+}
+.relative{
+	position: relative;
+}

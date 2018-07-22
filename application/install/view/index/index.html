@@ -1,0 +1,51 @@
+
+{include file='public/base' /}
+
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+        <!-- Navbar
+        ================================================== -->
+        <div class="navbar navbar-inverse ">
+            <div class="navbar-inner">
+                <div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					    <a class="navbar-brand" target="_blank" href="#">传劲后台安装</a>
+					</div>
+                    <nav class="collapse navbar-collapse">
+                    	<ul id="step" class="nav navbar-nav">
+                            <li class="active"><a href="javascript:;">安装协议</a></li>
+                            <li><a href="javascript:;">环境检测</a></li>
+                            <li><a href="javascript:;">创建数据库</a></li>
+                            <li><a href="javascript:;">{eq name="Think.session.update" value="1"}升级{else/}安装{/eq}</a></li>
+                            <li><a href="javascript:;">完成</a></li>
+                    	</ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="jumbotron masthead">
+            <div class="container">
+                <h1>传劲后台 V1.0 安装协议</h1>
+            </div>
+        </div>
+
+
+        <!-- Footer
+        ================================================== -->
+        <footer class="footer navbar">
+            <div class="container">
+                <div>
+                	
+    <a class="btn btn-primary btn-large" href="/install.php?s=/install/step1.html">同意安装协议</a>
+    <a class="btn btn-large" href="#">不同意</a>
+
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

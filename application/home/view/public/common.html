@@ -1,0 +1,55 @@
+<!-- 公共文件 -->
+<link rel="stylesheet" type="text/css" href="/static/common/css/s.css">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?66b5873d97b93e34bb452605f08434e8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+
+	// 初始化判断分类类型
+    $(function(){
+    
+	   	 browserRedirect(); 
+	  
+	  
+    });
+
+	////////////////
+	function browserRedirect() { 
+		var sUserAgent= navigator.userAgent.toLowerCase(); 
+
+		var bIsIpad= sUserAgent.match(/ipad/i) == "ipad"; 
+
+		var bIsIphoneOs= sUserAgent.match(/iphone os/i) == "iphone os"; 
+
+		var bIsMidp= sUserAgent.match(/midp/i) == "midp"; 
+
+		var bIsUc7= sUserAgent.match(/rv:1.2.3.4/i 
+
+		) == "rv:1.2.3.4 "; 
+
+		var bIsUc= sUserAgent.match(/ucweb/i) == "ucweb"; 
+
+		var bIsAndroid= sUserAgent.match(/android/i) == "android"; 
+
+		var bIsCE= sUserAgent.match(/windows ce/i) == "windows ce"; 
+
+		var bIsWM= sUserAgent.match(/windows mobile/i) == "windows mobile"; 
+	 
+
+		if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) { 
+			window.location.href= "/wap"; //手机端
+		} else { 
+			//window.location= "{:url('home/index/home')}"; //电脑端
+		} 
+
+} 
+
+ 
+
+</script>

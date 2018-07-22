@@ -1,0 +1,185 @@
+{include file="public/header" /}
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>订单列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->            
+            <div class="row">
+            <div class="col-sm-12">
+                <form name="admin_list_sea" class="form-search" method="post" action="{:url('admin/order/index')}">
+                    <div class="col-sm-3" style="width: 100%">
+                        <div class="input-group" style="display: flex;">
+
+                            <div style="display: flex;align-items: center;">
+                                <!-- <label style="margin-bottom: 0; width: 35%;">内容：</label> -->
+                                <input type="text" id="key" class="form-control" name="key" value="{$val}" placeholder="输入姓名/手机号码"/>  
+                            </div>
+                            
+                            &nbsp;&nbsp;&nbsp;
+                            <div style="display: flex;align-items: center;">
+                                <label style="margin-bottom: 0; width: 25%;">状态：</label>
+                                <select class="form-control" name="status" id="status">
+                                        <option value="">==请选择审核状态==</option>
+                                    {foreach name=":config('status')" item="vo"}
+                                        <option value="{$key}" {if condition="$status eq $key"}selected{/if}>{$vo}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;
+                            <div style="display: flex;align-items: center;">
+                                <span class="input-group-btn" >
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+            <!--搜索框结束-->
+            <div class="hr-line-dashed"></div>
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="long-tr">
+                                <th width="4%">ID</th>
+                                <th width="8%">用户姓名</th>
+                                <th width="8%">手机号码</th>
+                                <th width="8%">出游时间</th>
+                                <th width="8%">状态</th>
+                                <th width="8%">添加时间</th>
+                                <th width="8%">操作</th>
+                            </tr>
+                        </thead>
+                        <script id="list-template" type="text/html">
+                            {{# for(var i=0;i<d.length;i++){  }}
+                                <tr class="long-td">
+                                    <td>{{d[i].o_id}}</td> 
+                                    <td>{{d[i].username}}</td>
+                                    <td>{{d[i].telphone}}</td>
+                                    <td>{{d[i].start_time}}</td>
+                                    <td>
+                                        {{# if(d[i].status=='已审核'){ }}
+                                            <a href="javascript:;" onclick="order_state({{d[i].o_id}});">
+                                                <div id="zt{{d[i].o_id}}"><span class="label label-info">已审核</span></div>
+                                            </a>
+                                        {{# }else{ }}
+                                            <a href="javascript:;" onclick="order_state({{d[i].o_id}});">
+                                                <div id="zt{{d[i].o_id}}"><span class="label label-danger">未审核</span></div>
+                                            </a>
+                                        {{# } }}
+                                    </td> 
+                                    <td>{{d[i].create_times}}</td>                            
+                                    <td>
+                                        
+                                   
+                                        <a href="javascript:;" onclick="del_order({{d[i].o_id}})" class="btn btn-danger btn-xs btn-outline">
+                                            <i class="fa fa-trash-o"></i> 删除</a>
+                                    </td>
+                                </tr>
+                            {{# } }}
+                        </script>
+                        <tbody id="list-content"></tbody>
+                    </table>
+                    <div id="AjaxPage" style="text-align:right;"></div>
+                    <div style="text-align: right;">
+                        共{$count}条数据，<span id="allpage"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 加载动画 -->
+<div class="spiner-example">
+    <div class="sk-spinner sk-spinner-three-bounce">
+        <div class="sk-bounce1"></div>
+        <div class="sk-bounce2"></div>
+        <div class="sk-bounce3"></div>
+    </div>
+</div>
+
+{include file="public/footer" /}
+
+<script type="text/javascript">
+   
+    /**
+     * [Ajaxpage laypage分页]
+     * @param {[type]} curr [当前页]
+     */
+    Ajaxpage();
+
+    function Ajaxpage(curr){
+        var key=$('#key').val();
+        var status=$('#status').val();
+        $.getJSON('{:url("order/index")}', {
+            page: curr || 1,key:key,status:status
+        }, function(data){      //data是后台返回过来的JSON数据
+            $(".spiner-example").css('display','none'); //数据加载完关闭动画
+            if(data==''){
+                $("#list-content").html('<td colspan="20" style="padding-top:10px;padding-bottom:10px;font-size:16px;text-align:center">暂无数据</td>');
+            }else{
+                var tpl = document.getElementById('list-template').innerHTML;
+                laytpl(tpl).render(data, function(html){
+                    document.getElementById('list-content').innerHTML = html;
+                });
+                laypage({
+                    cont: $('#AjaxPage'),//容器。值支持id名、原生dom对象，jquery对象,
+                    pages:'{$allpage}',//总页数
+                    skip: true,//是否开启跳页
+                    skin: '#1AB5B7',//分页组件颜色
+                    curr: curr || 1,
+                    groups: 3,//连续显示分页数
+                    jump: function(obj, first){
+                        if(!first){
+                            Ajaxpage(obj.curr)
+                        }
+                        $('#allpage').html('第'+ obj.curr +'页，共'+ obj.pages +'页');
+                    }
+                });
+            }
+        });
+    }
+ 
+//查看
+/*function detail_order(o_id){
+    //location.href = './detail_order/o_id/'+o_id+'.html';
+
+    location.href = "{:url('order/detailOrder')}?o_id="+ o_id;
+}*/
+
+//删除
+function del_order(id){
+    lunhui.confirm(id,'{:url("delOrder")}');
+}
+
+//状态
+function order_state(id){
+    $.post('{:url("order/orderState")}',{id:id},function(data){           
+            if(data.code==1){
+                var a='<span class="label label-danger">未审核</span>'
+                $('#zt'+id).html(a);
+                layer.msg(data.msg,{icon:2,time:1500,shade: 0.1,});
+                return false;
+            }else{
+                var b='<span class="label label-info">已审核</span>'
+                $('#zt'+id).html(b);
+                layer.msg(data.msg,{icon:1,time:1500,shade: 0.1,});
+                return false;
+            }                   
+        });
+    return false;
+}
+
+
+
+</script>
+</body>
+</html>

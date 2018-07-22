@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>重庆三峡船票销售中心</title>
+		<meta name="keywords" content="船票,三峡船票,船票,重庆三峡船票销售中心" />
+  		<meta name="description" content="重庆三峡游轮船票销售中心属于重庆长江国际旅游公司，主要经营长江游轮旅游，是长江上最早从事长江三峡旅游业务的大型综合旅游国企，也是目前长江上规模最大、实力最强、安全最具保障的专业化旅游公司。">
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/zrstyle.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/swiper-4.2.2.min.css" />
+		<script type="text/javascript" src="__JS__/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="__JS__/swiper-4.2.2.min.js"></script>
+		<script type="text/javascript" src="__JS__/jquery-1.9.1.min.js"></script>
+	</head>
+
+	<body>
+		
+	</body>
+
+</html>
+<script>
+
+	// 初始化判断分类类型
+    $(function(){
+    
+	   	 browserRedirect(); 
+	  
+	  
+    });
+
+	////////////////
+	function browserRedirect() { 
+		var sUserAgent= navigator.userAgent.toLowerCase(); 
+
+		var bIsIpad= sUserAgent.match(/ipad/i) == "ipad"; 
+
+		var bIsIphoneOs= sUserAgent.match(/iphone os/i) == "iphone os"; 
+
+		var bIsMidp= sUserAgent.match(/midp/i) == "midp"; 
+
+		var bIsUc7= sUserAgent.match(/rv:1.2.3.4/i 
+
+		) == "rv:1.2.3.4 "; 
+
+		var bIsUc= sUserAgent.match(/ucweb/i) == "ucweb"; 
+
+		var bIsAndroid= sUserAgent.match(/android/i) == "android"; 
+
+		var bIsCE= sUserAgent.match(/windows ce/i) == "windows ce"; 
+
+		var bIsWM= sUserAgent.match(/windows mobile/i) == "windows mobile"; 
+	 
+
+		if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) { 
+			window.location.href= "{:url('wap/index/index')}"; //手机端
+		} else { 
+			//window.location= "{:url('home/index/home')}"; //电脑端
+		} 
+
+} 
+
+ 
+
+</script>

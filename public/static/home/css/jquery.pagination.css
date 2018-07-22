@@ -1,0 +1,65 @@
+<<<<<<< .mine
+.ui-pagination-container {
+	height: 34px;
+	line-height: 34px;
+}
+
+.ui-pagination-container .ui-pagination-page-item {
+	font-size: 14px;
+	padding: 4px 10px;
+	background: #fff;
+	border: 1px solid #c5b7b7;
+	color: #888;
+	margin: 0 3px;
+	text-decoration: none;
+}
+
+.ui-pagination-container .ui-pagination-page-item:hover {
+	border-color: #f62424;
+	color: #f62424;
+	text-decoration: none;
+}
+
+.ui-pagination-container .ui-pagination-page-item.active {
+	background: #f62424;
+	border-color: #f62424;
+	color: #fff;
+	cursor: default;
+	font-weight: bold;
+}||||||| .r0
+=======
+.ui-pagination-container {
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px；
+}
+// .ui-pagination-container a:first-child{
+// 	display: none
+// }
+// .ui-pagination-container a:last-child{
+// 	display: none
+// }
+
+.ui-pagination-container .ui-pagination-page-item {
+	border-radius: 50%;
+	font-size: 14px;
+	padding: 4px 10px;
+	background: #fff;
+	border: 1px solid #CBCBCB;
+	color: #CBCBCB;
+	margin: 0 3px;
+	text-decoration: none;
+}
+
+.ui-pagination-container .ui-pagination-page-item:hover {
+	border-color: #86B238;
+	color: #86B238;
+	text-decoration: none;
+}
+
+.ui-pagination-container .ui-pagination-page-item.active {
+	background: #fff;
+	border-color: #86B238;
+	color: #86B238;
+	cursor: default;
+}>>>>>>> .r2

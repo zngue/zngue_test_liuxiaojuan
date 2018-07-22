@@ -1,0 +1,466 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>重庆三峡船票销售中心</title>
+		<meta name="keywords" content="船票,三峡船票,船票,重庆三峡船票销售中心" />
+  		<meta name="description" content="重庆三峡游轮船票销售中心属于重庆长江国际旅游公司，主要经营长江游轮旅游，是长江上最早从事长江三峡旅游业务的大型综合旅游国企，也是目前长江上规模最大、实力最强、安全最具保障的专业化旅游公司。">
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/zrstyle.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/swiper-4.2.2.min.css" />
+		<script type="text/javascript" src="__JS__/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="__JS__/swiper-4.2.2.min.js"></script>
+		<script type="text/javascript" src="__JS__/jquery-1.9.1.min.js"></script>
+	</head>
+
+	<body>
+		{include file="public/common" /}
+		<div id="index" class="min-width">
+			<div class="header">
+				<div class="headerinner">
+					<div class="leftnav">
+						<h3>{$title}</h3>
+						<ul>
+							<li class="ac">
+								<a href="{:url('index/index')}">首页</a>
+							</li>
+							<li>
+								<a href="{:url('rich/rich')}">豪华游轮</a>
+							</li>
+							<li>
+								<a href="{:url('common/common')}">普通游轮</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=1')}">预定方式</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem??type=2')}">签订合同</a>
+							</li>
+							<li>
+								<a href="{:url('problem/problem')}">关于我们</a>
+							</li>
+							<li>
+								<a  target="_blank" href="https://shop372439941.taobao.com">淘宝支付</a>
+							</li>
+							
+						</ul>
+					</div>
+					<div class="rightlogo">
+						<p>24小时值班电话:<span>{$tel}</span></p>
+						<img src="__IMG__/shiplogo.png" />
+					</div>
+				</div>
+			</div>
+			<!--  <div class="banner">
+				<img src="__IMG__/indexbanner.jpg" />
+			</div>
+ -->
+
+ 		
+			<div class="swiper-container banner_list" style="width: 100%; height: 490px;">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide banner">
+						<img src="__IMG__/banner/banner.jpg" />
+					</div>
+					 <div class="swiper-slide banner">
+						<img src="__IMG__/banner/banner2.jpg" />
+					</div>
+			        
+			    </div>
+
+			     <div class="swiper-pagination"></div>
+			    
+			    <!-- 如果需要导航按钮 -->
+			    <div class="swiper-button-prev"></div>
+			    <div class="swiper-button-next"></div>
+			 
+			</div>
+
+
+			<script>        
+			  var mySwiper = new Swiper ('.banner_list', {
+			    loop: true,
+			    direction: 'horizontal',
+
+
+			    pagination: {
+		          el: '.swiper-pagination',
+		        },
+			    // 如果需要前进后退按钮
+			    navigation: {
+			      nextEl: '.swiper-button-next',
+			      prevEl: '.swiper-button-prev',
+			    },
+			    
+			  })        
+			  </script>
+
+
+
+			<div class="shipswiper">
+				<div class="tabnav">
+					<p class="cur">重庆<span>到</span>宜昌</p>
+					<p>宜昌<span>到</span>重庆</p>
+				</div>
+
+				<div class="lookmore">
+					<!-- <a href="{:url('rich/rich')}">查看更多游轮及详细船期表<i>▶</i></a> -->
+				</div>
+
+				<!--轮播图-->
+				
+					<div class="swiper-container myswiper1 on swiper-container_view">   
+						<div class="swiper-wrapper">
+							{if isset($list)}
+							{if $allpage>=1}
+								<div class="swiper-slide">
+								{foreach list as $k=>$v}
+								{if $k<6}
+									<div class="shipitem">
+										<div class="data">{$v[0]['starting_times']}</div>
+										{foreach list[$k] as $kk=>$vv}
+										<a href="{:url('rich/richDetail')}?s_id={$vv.s_id}">{$vv['r_name']}
+											<p>¥<span>{$vv['reference_price']}</span>/人 </p>
+										</a>
+										{/foreach}
+										<div class="week">{$v[0]['week_times']}</div>
+									</div>
+								{/if}
+								{/foreach}
+								</div>
+							{/if}
+
+							{if $allpage>=2}
+								<div class="swiper-slide">
+								{foreach list as $k=>$v}
+								{if $k>=6 && $k<12}
+									<div class="shipitem">
+										<div class="data">{$v[0]['starting_times']}</div>
+										{foreach list[$k] as $kk=>$vv}
+										<a href="{:url('rich/richDetail')}?s_id={$vv.s_id}">{$vv['r_name']}
+											<p>¥<span>{$vv['reference_price']}</span>/人 </p>
+										</a>
+										{/foreach}
+										<div class="week">{$v[0]['week_times']}</div>
+									</div>
+								{/if}
+								{/foreach}
+								</div>
+							{/if}
+
+							{if $allpage>=3}
+								<div class="swiper-slide">
+								{foreach list as $k=>$v}
+								{if $k>=12 && $k<18}
+									<div class="shipitem">
+										<div class="data">{$v[0]['starting_times']}</div>
+										{foreach list[$k] as $kk=>$vv}
+										<a href="{:url('rich/richDetail')}?s_id={$vv.s_id}">{$vv['r_name']}
+											<p>¥<span>{$vv['reference_price']}</span>/人 </p>
+										</a>
+										{/foreach}
+										<div class="week">{$v[0]['week_times']}</div>
+									</div>
+								{/if}
+								{/foreach}
+								</div>
+							{/if}
+							{/if}
+
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination swiper-pagination1"></div>
+
+						<!-- 如果需要导航按钮 -->
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				
+				
+					<div class="swiper-container myswiper2 swiper-container_view">
+						<div class="swiper-wrapper">
+							{if isset($list2)}
+							{if $allpage2>=1}
+								<div class="swiper-slide">
+								{foreach list2 as $k=>$v}
+								{if $k<6}
+									<div class="shipitem">
+										<div class="data">{$v[0]['starting_times']}</div>
+										{foreach list2[$k] as $kk=>$vv}
+										<a href="{:url('rich/richDetail')}?s_id={$vv.s_id}">{$vv['r_name']}
+											<p>¥<span>{$vv['reference_price']}</span>/人 </p>
+										</a>
+										{/foreach}
+										<div class="week">{$v[0]['week_times']}</div>
+									</div>
+								{/if}
+								{/foreach}
+								</div>
+							{/if}
+
+							{if $allpage2>=2}
+								<div class="swiper-slide">
+								{foreach list2 as $k=>$v}
+								{if $k>=6 && $k<12}
+									<div class="shipitem">
+										<div class="data">{$v[0]['starting_times']}</div>
+										{foreach list2[$k] as $kk=>$vv}
+										<a href="{:url('rich/richDetail')}?s_id={$vv.s_id}">{$vv['r_name']}
+											<p>¥<span>{$vv['reference_price']}</span>/人 </p>
+										</a>
+										{/foreach}
+										<div class="week">{$v[0]['week_times']}</div>
+									</div>
+								{/if}
+								{/foreach}
+								</div>
+							{/if}
+
+							{if $allpage2>=3}
+								<div class="swiper-slide">
+								{foreach list2 as $k=>$v}
+								{if $k>=12 && $k<18}
+									<div class="shipitem">
+										<div class="data">{$v[0]['starting_times']}</div>
+										{foreach list2[$k] as $kk=>$vv}
+										<a href="{:url('rich/richDetail')}?s_id={$vv.s_id}">{$vv['r_name']}
+											<p>¥<span>{$vv['reference_price']}</span>/人 </p>
+										</a>
+										{/foreach}
+										<div class="week">{$v[0]['week_times']}</div>
+									</div>
+								{/if}
+								{/foreach}
+								</div>
+							{/if}
+							{/if}
+
+						</div>
+
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination swiper-pagination2"></div>
+
+						<!-- 如果需要导航按钮 -->
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				</div>
+			
+
+			<!--游轮列表-->
+			<div class="shiplist">
+				<h3>豪华游轮</h3>
+				<div class="lookmore">
+					<a href="{:url('rich/rich')}">更多豪华游轮<i>▶</i></a>
+				</div>
+				<ul class="shipseries">
+					{foreach wholes as $k=>$v}
+						<li {if $k==0} class="ac"{/if} r_id="{$v.r_id}">{$v.name}</li> 
+					{/foreach}
+					
+				</ul>
+
+				{if isset($voyagess1)}
+				<div class="shipwrap" id="richvo">      
+				{foreach $voyagess1 as $k=>$v}	        
+					<div class="shipitme">
+						<a href="{:url('rich/richDetail')}?s_id={$v.s_id}">
+							<img src="/uploads/images/{$v.s_img}" />
+							<div class="shipdes">
+								<p class="shipname">{$v.r_name}</p>
+								<p>发团日期:<span>{$v.group_plans}</span></p>
+								<div class="bot">
+									<p>行程天数:<span>{$v.tourism_day}天</span></p>
+									<i class="price">￥{$v.reference_price}起</i>
+								</div>
+							</div>
+						</a>
+					</div>
+				{/foreach}
+				</div>
+				{/if}
+
+				
+				<h3>普通邮轮</h3>
+				<div class="lookmore">
+					<a href="{:url('common/common')}">更多普通邮轮<i>▶</i></a>
+				</div>
+				<div class="shipwrap">
+				{foreach $voyages as $k=>$v}	 
+					<div class="shipitme">
+						<a href="{:url('common/commonDetail')}?s_id={$v.s_id}">
+							<img src="/uploads/images/{$v.s_img}" />
+							<div class="shipdes">
+								<p class="shipname">{$v.p_name}</p>
+								<p>发团日期:<span>{$v.group_plans}</span></p>
+								<div class="bot">
+									<p>行程天数:<span>{$v.tourism_day}天</span></p>
+									<i class="price">￥{$v.reference_price}起</i>
+								</div>
+							</div>
+						</a>
+					</div>
+				{/foreach}
+				</div>
+			</div>
+
+			<!--常见问题-->
+			<div class="commonproblem">
+				<div class="toptitle">
+					<h3>常见问题</h3>
+					<span>FAQ</span>
+				</div>
+				<img src="__IMG__/syt.jpg" />
+				<div class="problemlist">
+					<span><a href="{:url('problem/problem??type=1')}">预订常见问题?</a></span>
+					<span><a href="{:url('problem/problem??type=2')}">签署旅游合同须知?</a></span>
+					<span><a href="{:url('problem/problem??type=3')}">付款问题解答?</a></span>
+					<span><a href="{:url('problem/problem??type=4#other1_pc')}">取消丶改签及退款说明?</a></span>
+					<span><a href="{:url('problem/problem??type=4#other2_pc')}">为什么需要提前预定?</a></span>
+					<span><a href="{:url('problem/problem??type=4#other4_pc')}">如何进行三峡豪华游轮前期咨询预定?</a></span>
+					<span><a href="{:url('problem/problem??type=4#other3_pc')}">三峡豪华游轮基本情况?</a></span>
+				</div>
+			</div>
+
+			<!--底部-->
+			<div class="footer">
+				<p>Copyright©2010-2018 重庆三峡船票销售中心</p>
+				<!--<p>电话：(86)027-8276 5618</p>-->
+				<p>旅行社经营许可证号：L-HUB-CJ00003 渝ICP备09022178号</p>
+				<p>渝公网安备 42010302000544号</p>
+			</div>
+		</div>
+
+		 <div id="rightArrow" style="top: 500px;"><a href="javascript:;" title="在线客户"></a></div>
+		<div id="floatDivBoxs" style="top: 500px;">
+		  	<div class="floatDtt">客服</div>
+		  	<div class="floatShadow">
+			    <!-- <ul class="floatDqq">
+			      <li style="padding-left:0px;"><a target="_blank" href="tencent://message/?uin=11&Site=sc.chinaz.com&Menu=yes"><img src="__IMG__/qq.png" align="absmiddle">&nbsp;&nbsp;在线客服1号</a></li>
+			      <li style="padding-left:0px;"><a target="_blank" href="tencent://message/?uin=22&Site=sc.chinaz.com&Menu=yes"><img src="__IMG__/qq.png" align="absmiddle">&nbsp;&nbsp;在线客服2号</a></li>
+			      <li style="padding-left:0px;"><a target="_blank" href="tencent://message/?uin=33&Site=sc.chinaz.com&Menu=yes"><img src="__IMG__/qq.png" align="absmiddle">&nbsp;&nbsp;在线客服3号</a></li>
+			    </ul> -->
+			    <div class="floatDtxt">电话热线</div> 
+			    <!-- <div class="floatDtel"><img src="__IMG__/online_phone.jpg" width="155" height="45" alt=""></div> -->
+			    <div class="floatDtel">{$tel}</div>
+				<div class="floatDtxt">手机热线</div> 
+				<div class="floatDtel">17782277711</div>
+			    <div style="text-align:center;padding:10px;background:#EBEBEB;"><img src="__IMG__/code.jpg" width="100%"><br>
+			      微信公众账号</div>
+			</div>
+		  	<!-- <div class="floatDbg"></div> -->
+		</div>
+		<script type="text/javascript" src="__JS__/rightArrow.js"></script>
+
+
+
+
+	</body>
+
+</html>
+<script>
+
+	// 初始化判断分类类型
+    $(function(){
+    
+       $(".myswiper1").show();
+	   $(".myswiper2").hide(); 
+
+	  
+    });
+
+	var mySwiper1 = new Swiper('.myswiper1', {
+		loop: true,
+		observer: true, //修改swiper自己或子元素时，自动初始化swiper
+		observeParents: true, //修改swiper的父元素时，自动初始化swiper
+
+		// 如果需要分页器
+		pagination: {
+			el: '.swiper-pagination1',
+		},
+
+		// 如果需要前进后退按钮
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+
+	})
+
+	var mySwiper2 = new Swiper('.myswiper2', {
+		loop: true,
+		observer: true, //修改swiper自己或子元素时，自动初始化swiper
+		observeParents: true, //修改swiper的父元素时，自动初始化swiper
+
+		// 如果需要分页器
+		pagination: {
+			el: '.swiper-pagination2',
+		},
+
+		// 如果需要前进后退按钮
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+
+	})
+
+	//swiper 选项卡
+	$(".tabnav p").click(function() {
+		$(".tabnav p").eq($(this).index()).addClass("cur").siblings().removeClass('cur');
+		$(".swiper-container_view").hide().eq($(this).index()).show();
+	});
+
+	// $('.shipwrap .shipitme').each(function(i) {
+	// 	var num = i + 1;
+	// 	if(num % 4 == 0) {
+	// 		$(this).css('margin-right', '0')
+	// 	}
+	// 	console.log(num)
+	// })
+
+
+	// 初始化判断商品分类类型
+    
+
+	//选择游轮系列
+	$('.shipseries li').click(function() {
+		$(this).addClass('ac').siblings().removeClass('ac');
+		var r_id = $(this).attr('r_id');
+		$.post('{:url("index/richQiehuan")}',
+	    {r_id:r_id},
+	    function(data){
+	    	$("#richvo").empty();
+	        if(data.code==1){
+	        	var list = data.data;    
+	        	var html1 = '';
+	        	$.each(list, function(k, p){
+	        		var ht = "{:url('rich/richDetail')}?s_id="+ p.s_id;
+	        		//console.log(ht);return
+					html1 += "<div class='shipitme'>";
+					html1 += "<a href='" + ht + "'>";
+					html1 += "<img src='/uploads/images/" + p.s_img +"'>";
+					html1 += "<div class='shipdes'>";				
+					html1 += "<p class='shipname'>"+p.r_name+"</p>";
+					html1 += "<p>发团日期:<span>"+p.group_plans+"</span></p>";
+					html1 += "<div class='bot'>";
+					html1 += "<p>行程天数:<span>"+p.tourism_day+"天</span></p>";
+					html1 += "<i class='price'>￥"+p.reference_price+"起</i>";
+					html1 += "</div>";
+					html1 += "</div>";
+					html1 += "</a>";
+					html1 += "</div>";
+				});
+				$('#richvo').html(html1);
+	        }       
+	        
+	    });
+
+	})
+
+
+
+ 
+
+</script>

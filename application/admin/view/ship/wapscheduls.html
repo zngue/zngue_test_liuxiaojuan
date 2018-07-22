@@ -1,0 +1,577 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/static/admin/webupload/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/static/admin/webupload/style.css">
+<style>
+	.file-item {
+		float: left;
+		position: relative;
+		width: 110px;
+		height: 110px;
+		margin: 0 20px 20px 0;
+		padding: 4px;
+	}
+	
+	.file-item .info {
+		overflow: hidden;
+	}
+	
+	.uploader-list {
+		width: 100%;
+		overflow: hidden;
+	}
+	
+	.num,
+	.num2 {
+		border-bottom: 1px dashed #333;
+		padding: 10px 0;
+	}
+</style>
+
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>手机行程安排</h5>
+						<div class="ibox-tools">
+							<a class="collapse-link">
+								<i class="fa fa-chevron-up"></i>
+							</a>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+								<i class="fa fa-wrench"></i>
+							</a>
+							<a class="close-link">
+								<i class="fa fa-times"></i> 
+							</a>
+						</div>
+					</div>
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" enctype="multipart/form-data" name="edit_wap" id="edit_wap" method="post" action="{:url('ship/wapScheduls')}">
+							<input type="hidden" name="s_id" value="{$info.s_id}">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">豪华游轮名称：</label>
+								<div class="input-group col-sm-4">
+									<input type="text" class="form-control" name="" readonly="true" value="{$info.r_name}">
+								</div>
+							</div>
+
+							
+							<div class="layui-tab">
+								<ul class="layui-tab-title">
+									<li class="layui-this">重庆到宜昌</li>
+									<li>宜昌到重庆</li>
+								</ul>
+
+								<div class="layui-tab-content">
+									{if $info.scheduling_wap1}
+									<!-- 正方向 -->
+									<div class="layui-tab-item layui-show">
+										<input type="hidden" name="come_day_num" value="{:count($info.scheduling_wap1)}" id="come_day_num">
+									
+										<div class="add">
+											{foreach info.scheduling_wap1 as $k=>$v}
+											<div class="num">
+												<div class="form-group" id="firstform" style="display: flex;align-items: flex-start;">
+													<label class="col-sm-3 control-label">具体天数：</label>
+													<div class="input-group col-sm-4">
+														<input id="the_day" type="text" class="form-control" name="the_day_{$k}" placeholder="输入具体天数" value="{$v.the_day}">
+													</div>
+													{if $k==0}
+													<div class="btn btn-default fl" style="margin-left: 20px" id="code2" onclick="adds()"><i class="glyphicon glyphicon-plus"></i></div>
+													{else}
+													<span class="btn btn-default fl" style="margin-left: 20px" onclick="del(this)"><i class="glyphicon glyphicon-minus"></i></span>
+													{/if}
+
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label">景点名称：</label>
+													<div class="input-group col-sm-4">
+														<input id="visit_name" type="text" class="form-control" name="visit_name_{$k}" placeholder="输入景点名称" value="{$v.visit_name}">
+													</div>
+												</div>
+								
+								<div>
+									<div class="addparts">
+										<input type="hidden" name="come_day_num_sec_{$k}" id="come_day_num_sec_{$k}" value={:count($v.time)}>
+										{foreach v.time as $kk=>$vv}
+										<div class="form-group num_sec" id="firstform" style="display: flex;align-items: flex-start;">
+											<label class="col-sm-3 control-label">{if $kk==0}时刻安排：{/if}</label>
+											<div class="input-group col-sm-4" style="display: flex;float: left">
+												<input  type="text" class="form-control" name="clock_{$k}_{$kk}" placeholder="输入时刻表" value="{$vv.clock}">
+												<input  type="text" class="form-control" name="sche_{$k}_{$kk}" placeholder="输入当前时刻安排" value="{$vv.sche}">
+                                			</div>
+                                			{if $kk==0}
+                                			<div class="btn btn-default fl" style="margin-left: 20px" id="code" onclick="addparts(this,{$k})"><i class="glyphicon glyphicon-plus"></i>
+                                			</div>
+                                			{else}
+                                			<span class="btn btn-default fl" style="margin-left: 20px" onclick="delparts(this)"><i class="glyphicon glyphicon-minus"></i></span>
+                                			{/if}
+                                			
+
+                           				</div>
+                           				{/foreach}
+                        			</div>                      
+                    			</div>
+                    			
+			                        <div class="form-group">
+			                            <label class="col-sm-3 control-label">景点图片：</label>
+			                            <div class="input-group col-sm-4">
+			                            	<input type="hidden" name="day_img_{$k}" value="{$v.day_img}" >
+			                                <input type="file" onchange="test(this)">
+			                                <img src="/uploads/images/{$v.day_img}" style="height: 50px">
+			                            </div>
+			                        </div>
+			
+			                        
+			                        <div class="form-group">
+			                            <label class="col-sm-3 control-label">游轮景点：</label>
+			                            <div class="input-group col-sm-4">
+			                                <input id="visit_remarks" type="text" class="form-control" name="visit_remarks_{$k}"  placeholder="游轮景点" value="{$v.visit_remarks}">
+			                            </div>
+			                        </div>
+			                    </div>
+                        		 {/foreach}
+                   			 </div>
+                   			
+						</div>
+						{else}
+						  	<div class="layui-tab-item layui-show">
+										<div class="add">
+											<input type="hidden" name="come_day_num" value="0" id="come_day_num">
+											<div class="num">
+												<div class="form-group" id="firstform" style="display: flex;align-items: flex-start;">
+													<label class="col-sm-3 control-label">具体天数：</label>
+													<div class="input-group col-sm-4">
+														<input id="the_day" type="text" class="form-control" name="the_day_0" placeholder="输入具体天数">
+													</div>
+													<div class="btn btn-default fl" style="margin-left: 20px" id="code2" onclick="adds()"><i class="glyphicon glyphicon-plus"></i></div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label">景点名称：</label>
+													<div class="input-group col-sm-4">
+														<input id="visit_name" type="text" class="form-control" name="visit_name_0" placeholder="输入景点名称">
+													</div>
+												</div>
+												<div>
+													<div class="addparts">
+														<div class="form-group num_sec" id="firstform" style="display: flex;align-items: flex-start;">
+															<input type="hidden" name="come_day_num_sec_0" id="come_day_num_sec_0" value="0">
+															<label class="col-sm-3 control-label">时刻安排：</label>
+															<div class="input-group col-sm-4" style="display: flex;float: left">
+																<input id="clock" type="text" class="form-control" name="clock_0_0" placeholder="输入时刻表" value="">
+																<input id="sche" type="text" class="form-control" name="sche_0_0" placeholder="输入当前时刻安排" ">
+                                    			</div>
+                                    			<div class="btn btn-default fl" style="margin-left: 20px" id="code" onclick="addparts(this,0)"><i class="glyphicon glyphicon-plus"></i></div>
+                               				</div>
+                            			</div>                      
+                        			</div>
+
+			                        <div class="form-group">
+			                            <label class="col-sm-3 control-label">景点图片：</label>
+			                            <div class="input-group col-sm-4">
+			                       
+			                                <input type="hidden" name="day_img_0"  >
+			                                <input type="file" onchange="test(this)">
+			                                <img src="/static/admin/images/no_img.jpg" style="height: 50px">
+			                            </div>
+			                        </div>
+			
+			                        
+			                        <div class="form-group">
+			                            <label class="col-sm-3 control-label">游轮景点：</label>
+			                            <div class="input-group col-sm-4">
+			                                <input id="visit_remarks" type="text" class="form-control" name="visit_remarks_0"  placeholder="游轮景点">
+			                            </div>
+			                        </div>
+			                    </div>
+                        
+                   			 </div>
+							</div>
+						{/if}
+					<!-- 反方向 -->
+					{if $info.scheduling_wap2}
+					<div class="layui-tab-item">
+						<input type="hidden" name="back_day_num" value="{:count($info.scheduling_wap2)}" id="back_day_num" style="display: none;">
+						
+						<div class="add2" >
+						{foreach info.scheduling_wap2 as $k=>$v}
+                         <div class="num2">
+                         <div class="form-group" id="firstform" style="display: flex;align-items: flex-start;">
+                            <label class="col-sm-3 control-label">具体天数：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="the_day2" type="text" class="form-control" name="the_day2_{$k}" placeholder="输入具体天数" value="{$v.the_day}">
+                            </div>
+                            {if $k==0}
+                            <div class="btn btn-default fl" style="margin-left: 20px" onclick="adds2()"><i class="glyphicon glyphicon-plus"></i></div>
+                            {else}
+                            <span class="btn btn-default fl" style="margin-left: 20px" onclick="del2(this)"><i class="glyphicon glyphicon-minus"></i></span>
+                            {/if}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">景点名称：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="visit_name2" type="text" class="form-control" name="visit_name2_{$k}" placeholder="输入景点名称" value="{$v.visit_name}">
+                            </div>
+                        </div>
+
+                        
+
+                        <div>
+                            <div class="addparts" >
+                            	 <input type="hidden" name="back_day_num_sec_{$k}" id="back_day_num_sec_{$k}" value="{:count($v.time)}"  style="display: none;">
+                            	{foreach v.time as $kk=>$vv}
+                                <div class="form-group" id="firstform" style="display: flex;align-items: flex-start;">
+                                   
+                                    <label class="col-sm-3 control-label">{if $kk==0}时刻安排：{/if}</label>
+                                    <div class="input-group col-sm-4" style="display: flex;float: left">
+                                        <input type="text" class="form-control" name="clock2_{$k}_{$kk}" 
+                                        placeholder="输入时刻表" value="{$vv.clock}">
+                                        <input type="text" class="form-control" name="sche2_{$k}_{$kk}" placeholder="输入当前时刻安排" value="{$vv.sche}">
+									</div>
+									{if $kk==0}
+									<div class="btn btn-default fl" style="margin-left: 20px" 
+									 onclick="addparts2(this,{$k})"><i class="glyphicon glyphicon-plus"></i>
+									</div>
+									{else}
+									<span class="btn btn-default fl" style="margin-left: 20px" onclick="delparts2(this)"><i class="glyphicon glyphicon-minus"></i></span>
+									{/if}
+								</div>
+								{/foreach}
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label">景点图片：</label>
+							<div class="input-group col-sm-4">
+								<input type="hidden" name="day_img2_{$k}" value="{$v.day_img}" >
+								<input type="file"  onchange="test(this)">
+								<img src="/uploads/images/{$v.day_img}" style="height: 50px">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">游轮景点：</label>
+							<div class="input-group col-sm-4">
+								<input id="visit_remarks2" type="text" class="form-control" name="visit_remarks2_{$k}" placeholder="游轮景点" value="{$v.visit_remarks}">
+							</div>
+						</div>
+						</div>
+						{/foreach}		
+						</div>
+										
+						</div>
+						{else}
+						<!-- 反方向 -->
+						<div class="layui-tab-item">
+							<div class="add2" >
+
+                         <input type="hidden" name="back_day_num" value="0" id="back_day_num" style="display: none;">
+                         <div class="num2">
+                         <div class="form-group" id="firstform" style="display: flex;align-items: flex-start;">
+                            <label class="col-sm-3 control-label">具体天数：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="the_day2" type="text" class="form-control" name="the_day2_0" placeholder="输入具体天数">
+                            </div>
+                            <div class="btn btn-default fl" style="margin-left: 20px" id="code2" onclick="adds2()"><i class="glyphicon glyphicon-plus"></i></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">景点名称：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="visit_name2" type="text" class="form-control" name="visit_name2_0" placeholder="输入景点名称">
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <div class="addparts" >
+                                <div class="form-group" id="firstform" style="display: flex;align-items: flex-start;">
+                                    <input type="hidden" name="back_day_num_sec_0" id="back_day_num_sec_0" value="0"  style="display: none;">
+                                    <label class="col-sm-3 control-label">时刻安排：</label>
+                                    <div class="input-group col-sm-4" style="display: flex;float: left">
+                                        <input id="clock2" type="text" class="form-control" name="clock2_0_0" 
+                                        placeholder="输入时刻表">
+                                        <input id="sche2" type="text" class="form-control" name="sche2_0_0" placeholder="输入当前时刻安排">
+									</div>
+									<div class="btn btn-default fl" style="margin-left: 20px" id="code" onclick="addparts2(this,0)">
+										<i class="glyphicon glyphicon-plus"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">景点图片：</label>
+							<div class="input-group col-sm-4">
+								<input type="hidden" name="day_img2_0"  >
+			                    <input type="file" onchange="test(this)">
+			                    <img src="/static/admin/images/no_img.jpg" style="height: 50px">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">游轮景点：</label>
+							<div class="input-group col-sm-4">
+								<input id="visit_remarks2" type="text" class="form-control" name="visit_remarks2_0" placeholder="游轮景点">
+							</div>
+						</div>
+						</div>
+										</div>
+									</div>
+
+								{/if}
+							</div>
+						</div>
+						
+
+							<div class="form-group">
+								<div class="col-sm-4 col-sm-offset-3">
+									<button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> 保存</button> &nbsp;&nbsp;&nbsp;
+									<a class="btn btn-danger" href="javascript:history.go(-1);"><i class="fa fa-close"></i> 返回</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	{include file="public/footer" /}
+
+	<script type="text/javascript" src="/static/admin/webupload/webuploader.min.js"></script>
+	<script type="text/javascript">
+		/*var i = 1;
+		var num = 1;
+
+		$("#p_is_pay").change(function(){
+			var ss = $(this).children('option:selected').val(); 
+				if (ss == 0) {  
+					= 1;
+		}else{
+	e();
+			 }
+		});*/
+
+		function addparts(abs,num) {
+			console.log(num)
+			var num_sec = parseInt($("#come_day_num_sec_" + num).val()) + 1;
+
+			console.log(num_sec, num);
+			$("#come_day_num_sec_" + num).val(num_sec);
+			var html = '<div class="form-group num_sec" class="addparts" style="display: flex;align-items: flex-start;">';
+			html += ' <label class="col-sm-3 control-label"></label>';
+			html += '<div class="input-group col-sm-4" style="display: flex;float: left">';
+			html += '<input id="clock" type="text" class="form-control" name="clock_' + num + "_" + num_sec + '" placeholder="输入输入时刻表">';
+			html += '<input id="sche" type="text" class="form-control" name="sche_' + num + '_' + num_sec + '"  placeholder="输入当前时刻安排">';
+			html += '</div>';
+			html += '<span class="btn btn-default fl" style="margin-left: 20px" onclick="delparts(this)"><i class="glyphicon glyphicon-minus"></i></span>';
+			html += '</div>'
+			console.log($(abs))
+			$(abs).parent().parent().append(html);
+
+		}
+
+		function delparts(obj) {
+			$(obj).parent().remove();
+		}
+		////////////////////////////////////////////////////////////////////
+
+		function adds() {
+			var num = $('.num').length;
+			$("#come_day_num").val(num);
+			var html1 = '';
+			html1 += '<div class="num"><div class="form-group"  style="display: flex;align-items: flex-start;">';
+			html1 += '<label class="col-sm-3 control-label">具体天数：</label>';
+			html1 += '<div class="input-group col-sm-4">';
+			html1 += '<input  type="text" class="form-control" name="the_day_' + num + '" placeholder="输入具体天数" value="">';
+			html1 += '</div>';
+			html1 += '<span class="btn btn-default fl" style="margin-left: 20px" onclick="del(this)"><i class="glyphicon glyphicon-minus"></i></span>';
+			html1 += '</div>';
+			html1 += '<div class="form-group">';
+			html1 += '<label class="col-sm-3 control-label">景点名称：</label>';
+			html1 += '<div class="input-group col-sm-4">';
+			html1 += '<input  type="text" class="form-control" name="visit_name_' + num + '" placeholder="输入景点名称" value="">';
+			html1 += '</div>';
+			html1 += '</div>';
+			html1 += '<div>';
+			html1 += '<div class="addparts" >';
+			html1 += '<div class="form-group"  style="display: flex;align-items: flex-start;">';
+			html1 += ' <label class="col-sm-3 control-label">时刻安排：</label>';
+			html1 += ' <input type="hidden" name="come_day_num_sec_' + num + '" id="come_day_num_sec_' + num + '" value="0"><div class="input-group col-sm-4" style="display: flex;float: left">';
+			html1 += '<input  type="text" class="form-control" name="clock_' + num + '_0" placeholder="输入输入时刻表">';
+			html1 += '<input  type="text" class="form-control" name="sche_' + num + '_0" placeholder="输入当前时刻安排">';
+			html1 += '</div>';
+			html1 += '<div class="btn btn-default fl" style="margin-left: 20px" id="code"  onclick="addparts(this,'+num+')"><i class="glyphicon glyphicon-plus"></i></div>';
+			html1 += '</div>';
+			html1 += '</div>';
+			html1 += '</div>';
+			html1 += '<div class="form-group">';
+			html1 += '<label class="col-sm-3 control-label">景点图片：</label>';  
+			html1 += '<div class="input-group col-sm-4">'; 
+			html1 += '<input type="hidden" name="day_img_' + num + '" >';
+			html1 += '<input type="file"  onchange="test(this)" >';
+			html1 += '<img src="/static/admin/images/no_img.jpg" style="height: 50px">';
+			html1 += '</div>';
+			html1 += '</div>';
+			html1 += '<div class="form-group">';
+			html1 += '<label class="col-sm-3 control-label">游轮景点：</label>';
+			html1 += '<div class="input-group col-sm-4">';
+			html1 += '<input  type="text" class="form-control" name="visit_remarks_' + num + '"  placeholder="游轮景点">';
+			html1 += '</div>';
+			html1 += '</div> </div>';
+			$('.add').append(html1);
+
+		}
+
+		function del(obj) {
+			$(obj).parent().parent().remove();
+		}
+
+		//////////////////////宜昌到重庆////////////////////////////////////////////////////////////////////////////////
+
+		function addparts2(abs2,num) {
+			var num_sec = parseInt($("#back_day_num_sec_" + num).val()) + 1;
+
+			console.log(num_sec, num);
+			$("#back_day_num_sec_" + num).val(num_sec);
+			var html = '<div class="form-group" class="addparts" style="display: flex;align-items: flex-start;">';
+			html += ' <label class="col-sm-3 control-label"></label>';
+			html += '<div class="input-group col-sm-4" style="display: flex;float: left">';
+			html += '<input id="clock2" type="text" class="form-control" name="clock2_' + num + "_" + num_sec + '"  placeholder="输入输入时刻表">';
+			html += '<input id="sche2" type="text" class="form-control" name="sche2_' + num + "_" + num_sec + '"  placeholder="输入当前时刻安排">';
+			html += '</div>';
+			html += '<span class="btn btn-default fl" style="margin-left: 20px" onclick="delparts2(this)"><i class="glyphicon glyphicon-minus"></i></span>';
+			html += '</div>'
+			console.log($(abs2))
+			$(abs2).parent().parent().append(html);
+
+		}
+
+		function delparts2(obj) {
+			$(obj).parent().remove();
+		}
+		////////////////////////////////////////////////////////////////////
+
+		function adds2() {
+			var num = $('.num2').length;
+			$("#back_day_num").val(num);
+			var html1 = '';
+			html1 += '<div class="num2"><div class="form-group" id="firstform" style="display: flex;align-items: flex-start;">';
+			html1 += '<label class="col-sm-3 control-label">具体天数：</label>';
+			html1 += '<div class="input-group col-sm-4">';
+			html1 += '<input id="the_day2" type="text" class="form-control" name="the_day2_' + num + '" placeholder="输入具体天数" value="">';
+			html1 += '</div>';
+			html1 += '<span class="btn btn-default fl" style="margin-left: 20px" onclick="del2(this)"><i class="glyphicon glyphicon-minus"></i></span>';
+			html1 += '</div>';
+			html1 += '<div class="form-group">';
+			html1 += '<label class="col-sm-3 control-label">景点名称：</label>';
+			html1 += '<div class="input-group col-sm-4">';
+			html1 += '<input id="visit_name2" type="text" class="form-control" name="visit_name2_' + num + '" placeholder="输入景点名称" value="">';
+			html1 += '</div>';
+			html1 += '</div>';
+			html1 += '<div>';
+			html1 += '<div class="addparts" >';
+			html1 += '<div class="form-group" id="firstform" style="display: flex;align-items: flex-start;">';
+			html1 += ' <label class="col-sm-3 control-label">时刻安排：</label>';
+			html1 += '<div class="input-group col-sm-4" style="display: flex;float: left">';
+			html1 += '<input type="hidden" name="back_day_num_sec_' + num + '" id="back_day_num_sec_' + num + '" value="0"><input id="clock2" type="text" class="form-control" name="clock2_' + num + '_0" placeholder="输入输入时刻表">';
+			html1 += '<input id="sche2" type="text" class="form-control" name="sche2_' + num + '_0" placeholder="输入当前时刻安排">';
+			html1 += '</div>';
+			html1 += '<div class="btn btn-default fl" style="margin-left: 20px" id="code" onclick="addparts2(this,'+num+')"><i class="glyphicon glyphicon-plus"></i></div>';
+			html1 += '</div>';
+			html1 += '</div>';
+			html1 += '</div>';
+			html1 += '<div class="form-group">';
+			html1 += '<label class="col-sm-3 control-label">景点图片：</label>';
+			html1 += '<div class="input-group col-sm-4">';
+			html1 += '<input type="hidden" name="day_img2_' + num + '" >';
+			html1 += '<input type="file"  onchange="test(this)">';
+			html1 += '<img src="/static/admin/images/no_img.jpg" style="height: 50px">';
+			html1 += '</div>';
+			html1 += '</div>';
+			html1 += '<div class="form-group">';
+			html1 += '<label class="col-sm-3 control-label">游轮景点：</label>';
+			html1 += '<div class="input-group col-sm-4">';
+			html1 += '<input id="visit_remarks2" type="text" class="form-control" name="visit_remarks2_' + num + '"  placeholder="游轮景点">';
+			html1 += '</div>';
+			html1 += '</div> </div>';
+
+
+			$('.add2').append(html1);
+
+		}
+
+		function del2(obj) {
+			$(obj).parent().parent().remove();
+		}
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$('#edit_wap').ajaxForm({
+				beforeSubmit: checkForm, // 此方法主要是提交前执行的方法，根据需要设置
+				success: complete, // 这是提交后的方法
+				dataType: 'json'
+			});
+
+			function checkForm() {
+				/*if( '' == $.trim($('#a_title').val())){
+				    layer.msg('标题不能为空', {icon: 5,time:1500,shade: 0.1}, function(index){
+				        layer.close(index);
+				    });
+				    return false;
+				}*/
+
+			}
+
+			function complete(data) {
+				if(data.code == 1) {
+					layer.msg(data.msg, {icon: 6,time: 1500,shade: 0.1}, function(index) {
+						layer.close(index);
+						window.location.href = "{:url('ship/richIndex')}";
+					});
+				} else {
+					layer.msg(data.msg, {icon: 5,time: 1500,shade: 0.1}, function(index) {
+						layer.close(index);
+					});
+					return false;
+				}
+			}
+
+		});
+
+		layui.use('element', function() {
+			var element = layui.element;
+
+			//…
+		});
+		function  test(obj){
+			var formdata = new FormData();   
+			console.log($(obj).get(0).files[0]);
+			formdata.append("file", $(obj).get(0).files[0]);
+			$.ajax({
+                url:'{:url("Upload/upload")}',
+                type:'post',                
+                data:formdata, 
+                processData: false,
+      			contentType: false,              
+                success:function(info){    
+                    console.log(info)
+                //   $(obj).val(info);
+                   console.log($(obj).prev().val(info));
+                   $(obj).next().attr("src",'/uploads/images/'+info);
+                },
+                error:function(err){
+                    console.log(err)
+                }
+            });
+			//$(obj).next('img').remove();
+		}
+	</script>
+</body>
+
+</html>
